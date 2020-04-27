@@ -1,0 +1,59 @@
+<!doctype=html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>type idea;</title>
+
+
+</head>
+
+<body>
+	<canvas id="drawCanvas" width="1000px" height="1000px"></canvas>
+	<script>
+
+		var paper = document.getElementById("drawCanvas");
+		var context = paper.getContext("2d");
+		
+		var x = 120;
+		var y = 130;		
+		
+		
+		context.beginPath();
+		context.arc(x, y, 100, 0, 2 * Math.PI, true);
+		context.stroke();
+		
+		
+		context.beginPath();
+		context.moveTo(x + Math.cos((Math.PI/180)*45)*100, y + Math.sin((Math.PI/180)*45)*100);
+		context.lineTo(x+250 + Math.cos((Math.PI/180)*180)*100, y+250 + Math.sin((Math.PI/180)*180)*100);
+		context.stroke();
+		
+		context.beginPath();
+		context.arc(x+250, y+250, 100, 0, 2 * Math.PI, true);
+		context.stroke();
+		
+		context.beginPath();
+		context.moveTo(x+250 + Math.cos((Math.PI/180)*45)*100, y+250 + Math.sin((Math.PI/180)*45)*100);
+		context.lineTo(x + 550 + Math.cos((Math.PI/180)*200)*100, y + 250 +  Math.sin((Math.PI/180)*200)*100);
+		context.stroke();
+		
+		context.beginPath();
+		context.arc(x+550, y+250, 100, 0, 2 * Math.PI, true);
+		context.stroke();
+
+
+</script>
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+</html>

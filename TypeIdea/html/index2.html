@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="fabric.js"></script>
+<Script>
+	window.onload = init;
+	function init() {
+		var button = document.getElementById("addButton");
+		canvas = new fabric.Canvas('mainCanvas', {
+			selection : false
+		});
+		fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
+		groups = new Array();
+		lines = new Array();
+		i = 0;
+		j = 0;
+		hasText = true;
+		spltTxt = new Array();
+
+		button.onclick = function() {
+			var textInput = document.getElementById("ideaInput");
+			var textval = textInput.value.trim();
+			spltTxt = textval.split(":");
+			var pattern = /^\s*$/;
+			
+			for( k = 0; k < spltTxt.length; k++) {
+				spltTxt[k] = spltTxt[k].trim();			
+				
+				
+				var result = spltTxt[k].match(pattern);
+				if(result || spltTxt[k] == "" || spltTxt[k] == null ) {
+					spltTxt.splice(k, 1);
+					alert(spltTxt[k]);
+					alert(spltTxt.length);
+				}
+				
+				
+			}
+			
+			//문자열에 ":"가 있을 때만  원을 그린다.
+			if(textval.indexOf(":") != -1 ) {				
+				for(k = 0; k < spltTxt.length; k++) {				
+		
+					groups[k] = drawCircle(spltTxt[k].trim());	
+										
+				}				
+				
+				
+				for(k=0; k<groups.length-1; k++) {
+					lines[k] = drawLine(groups[k], groups[k+1]);
+					groups[k].line1 = lines[k];				
+					groups[k+1].line2 = lines[k];					
+					
+				}
+				
+				for(k=0; k<groups.length-1; k++) {
+					//원과 라인을 추가한 후 라인을 레이어 맨 뒤로 보낸다.
+					canvas.add(groups[k]);
+					canvas.add(groups[k+1]);
+					canvas.add(lines[k]);
+					canvas.sendToBack(lines[k]);
+					
+				}				
+				
+				canvas.on('object:moving', function(e) {
+				    var p = e.target;
+				    p.line1 && p.line1.set({ 'x1': p.left, 'y1': p.top });   
+				    p.line2 && p.line2.set({ 'x2': p.left, 'y2': p.top });   
+				    canvas.renderAll();
+				  });
+				
+		
+			}
+
+		}		
+	}
+	
+	function drawCircle(text) {
+		var x = Math.random()*canvas.width;
+		var y = Math.random()*canvas.height;
+		var radius = 70;
+		
+		var c = new fabric.Circle({
+			strokeWidth : 1,
+			radius : radius,
+			fill : 'white',
+			stroke : 'black',
+			selectable : false,
+			evented : false,
+
+		});
+		
+		var t = new fabric.Text(text, {
+			fontSize : 90 / text.length,
+
+		});
+
+		var g = new fabric.Group([ c, t ], {
+
+			left : x,
+			top : y,				
+			
+
+		});
+		g.hasControls = g.hasBorders = false;
+		
+		return g;	
+		
+	}
+	
+	function drawLine(g1, g2) {
+		
+		 var l = new fabric.Line([g1.left, g1.top, g2.left, g2.top], {
+				fill : 'white',
+				stroke : 'black',
+				strokeWidth : 1,
+				selectable : false,
+				evented : false,				
+			});
+			
+		 return l;
+		 
+			}
+	
+</script>
+<title>type idea</title>
+</head>
+<body>
+
+	<form>
+		<input type="text" id="ideaInput" size="100" placeholder="type idea">
+		<input type="button" id="addButton" value="add">
+	</form>
+
+	<canvas id="mainCanvas" width="900" height="900"> 
+</canvas>
+
+</body>
+</html>

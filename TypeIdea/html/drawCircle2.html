@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+
+<script src="fabric.js">
+	
+</script>
+
+
+</head>
+<body>
+	<canvas id="mainCanvas" width="900" height="900">
+    </canvas>
+
+	<script>
+		var canvas = new fabric.Canvas('mainCanvas');
+		fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
+
+		function makeLine(coords) {
+			return new fabric.Line(coords, {
+				fill : 'black',
+				stroke : 'black',
+				strokeWidth : 1,
+				selectable : false,
+				evented : false,
+			});
+		}
+
+		function makeCircle(radius) {
+			var c = new fabric.Circle({
+
+				strokeWidth : 1,
+				radius : radius,
+				fill : 'white',
+				stroke : 'black',
+				selectable : false,
+				evented : false,
+			});
+			c.hasControls = c.hasBorders = false;
+
+			return c;
+		}
+
+		function makeLine(coords) {
+			return new fabric.Line(coords, {
+				fill : 'white',
+				stroke : 'black',
+				strokeWidth : 1,
+				selectable : false,
+				evented : false,
+			});
+		}
+
+		var circles = new Array();
+		var lines = new Array();
+		var groups = new Array();
+		var texts = new Array();
+
+		for (i = 0; i < 20; i++) {
+
+			var x = Math.floor(Math.random() * (canvas.width - 200)) + 70;
+			var y = Math.floor(Math.random() * (canvas.height - 200)) + 70;
+			var r = Math.random() * 50 + 20;
+
+			circles[i] = makeCircle(r);
+			//canvas.add(circles[i]);
+
+			texts[i] = new fabric.Text('빵성희', {
+				fontSize : r/2,
+				originX : 'center',
+				originY : 'center'
+			});
+
+			groups[i] = new fabric.Group([ circles[i], texts[i] ], {		
+		
+				left : x,
+				top : y,
+				originX : 'center',
+				originY : 'center',
+				selectable : false,
+				evented : false,
+
+			});
+			canvas.add(groups[i]);
+
+			if (groups[i - 1] != null) {
+				lines[i] = makeLine([ groups[i - 1].left, groups[i - 1].top,
+						groups[i].left, groups[i].top ]);
+
+				canvas.add(lines[i]);
+
+			}
+
+		}
+
+		for (i = 0; i < circles.length; i++) {
+			canvas.bringToFront(groups[i]);
+
+		}
+
+		//canvas.sendBackwards(myObject)
+		//canvas.sendToBack(myObject)
+		//canvas.bringForward(myObject)
+		//canvas.bringToFront(myObject)
+
+		// canvas.selection = false;
+
+		// var rect = new fabric.Rect({
+		//   left: 100,
+		//   top: 100,
+		//   fill: 'red',
+		//   width: 20,
+		//   height: 20,
+		//   angle: 45
+		// });
+		//
+		// canvas.add(rect);
+
+		// rect.set({left: 20, top: 50});
+		// canvas.renderAll();
+		//
+		// rect.set('fill', 'blue');
+		// rect.set({strokeWidth:5, stroke: 'rgba(100,200,200,0.5)'});
+		// rect.set('angle', 15).set('flipY', true);
+	</script>
+
+
+</body>
+</html>

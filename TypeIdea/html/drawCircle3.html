@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+
+<script src="fabric.js">
+
+</script>
+
+
+</head>
+<body>
+
+<form>
+  <fieldset>
+    <label>입력하세요:<input type="text" id="input_id" size="100"></label>
+  </fieldset>
+</form>
+
+	<canvas id="mainCanvas" width="900" height="900">
+    </canvas>
+
+
+
+	<script>
+		var canvas = new fabric.Canvas('mainCanvas', { selection: false });
+		fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
+
+		function makeCircleText(radius, text, x, y) {
+			var c = new fabric.Circle({
+
+				strokeWidth : 1,
+				radius : radius,
+				fill : 'white',
+				stroke : 'black',
+				selectable : false,
+				evented : false,
+
+			});
+
+
+			var t = new fabric.Text(text, {
+				fontSize : radius / 2,
+
+			});
+
+			var g = new fabric.Group([ c, t ], {
+
+				left : x,
+				top : y,
+
+
+			});
+			g.hasControls = g.hasBorders = false;
+
+			return g;
+		}
+
+		function makeLine(coords) {
+			return new fabric.Line(coords, {
+				fill : 'white',
+				stroke : 'black',
+				strokeWidth : 1,
+				selectable : false,
+				evented : false,
+
+			});
+		}
+
+		var groups = new Array();
+		var lines = new Array();
+
+		for (i = 0; i < 30; i++) {
+
+			var x = Math.random() * (canvas.width - 200) + 100;
+			var y = Math.random() * (canvas.height - 200) + 100;
+			var r = Math.random() * 50 + 20;
+
+			groups[i] = makeCircleText(r, "빵성희", x, y);
+
+			canvas.add(groups[i]);
+
+			if (groups[i - 1] != null) {
+
+				lines[i] = makeLine([ groups[i - 1].left, groups[i - 1].top,
+					 groups[i].left, groups[i ].top]);
+				canvas.add(lines[i]);
+
+			}
+		} // end for;
+
+
+		for(i=0; i< groups.length; i++){
+		groups[i].line1 = lines[i];
+		groups[i].line2 = lines[i+1];
+
+		canvas.add(groups[i]);
+		}
+
+		canvas.on('object:moving', function(e) {
+		    var p = e.target;
+		    p.line1 && p.line1.set({ 'x2': p.left, 'y2': p.top });
+		    p.line2 && p.line2.set({ 'x1': p.left, 'y1': p.top });
+		    canvas.renderAll();
+		  });
+
+
+	</script>
+
+
+</body>
+</html>

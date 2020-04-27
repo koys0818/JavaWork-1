@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="fabric.js"></script>
+<Script>
+	window.onload = init;
+	function init() {
+		var button = document.getElementById("addButton");
+		canvas = new fabric.Canvas('mainCanvas', {selection : false});
+		fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
+		groups = new Array();
+		lines = new Array();
+		i = 0;
+		j = 0;
+		hasText = true;
+		
+
+		button.onclick = function() {
+			
+			var textInput = document.getElementById("ideaInput");
+			
+			//기존의 원 안에 중복값 여부 확인
+			if(groups[0] != null) {
+				for(k=0; k<groups.length; k++) {
+				if(groups[k].getObjects()[1].text == textInput.value) {
+					hasText = false;
+					break;
+				} else {
+					hasText = true;
+				}			
+				}
+			}
+			
+			//공란이 아니고 중복이 아니면 원을 그린다
+			if(textInput.value != "" && hasText) {			
+			var x = Math.random()*canvas.width;
+			var y = Math.random()*canvas.height;
+			var radius = 70;
+			
+			var c = new fabric.Circle({
+				strokeWidth : 1,
+				radius : radius,
+				fill : 'white',
+				stroke : 'black',
+				selectable : false,
+				evented : false,
+
+			});
+			
+			var t = new fabric.Text(textInput.value, {
+				fontSize : 90 / textInput.value.length,
+
+			});
+
+			groups[i] = new fabric.Group([ c, t ], {
+
+				left : x,
+				top : y,				
+				
+
+			});
+			groups[i].hasControls = groups[i].hasBorders = false;
+
+			//canvas.add(groups[i]);
+			
+			
+			
+			if(groups[i-1] != null) {
+			lines[j] = new fabric.Line([groups[i-1].left, groups[i-1].top, groups[i].left, groups[i].top], {
+				fill : 'white',
+				stroke : 'black',
+				strokeWidth : 1,
+				selectable : false,
+				evented : false,				
+			});
+			canvas.add(lines[j]);			
+			j++;
+			
+			}
+			i++;
+		}
+			
+			//var b = groups[0].getObjects();
+			//alert(groups[0].getObjects()[1].text);
+			//groups.includes(groups[0].getObjects()[1].text) = false;
+			
+			// groups원소들에 line을 달아준다.
+			
+
+			for(k=0; k< groups.length; k++){
+				groups[k].line1 = lines[k-1];
+				groups[k].line2 = lines[k];
+					
+				canvas.add(groups[k]);
+				}
+			
+			
+			// 물체를 움직일때 line이 같이 움직이게 한다.
+				canvas.on('object:moving', function(e) {
+				    var p = e.target;
+				    p.line1 && p.line1.set({ 'x2': p.left, 'y2': p.top });
+				    p.line2 && p.line2.set({ 'x1': p.left, 'y1': p.top });		   
+				    canvas.renderAll();
+				  });
+			
+			
+	}
+	}
+	
+	
+</script>
+<title>type idea</title>
+</head>
+<body>
+
+	<form>
+		<input type="text" id="ideaInput" size="100" placeholder="type idea">
+		<input type="button" id="addButton"  value="add">
+	</form>
+
+	<canvas id="mainCanvas" width="900" height="900"> 
+</canvas>
+
+</body>
+</html>
