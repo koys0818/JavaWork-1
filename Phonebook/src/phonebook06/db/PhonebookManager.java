@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 // 어플리케이션의 동작, 데이터 처리(CRUD), (Business logic 담당)
 public class PhonebookManager implements Pb, Closeable {
 
-	// TODO : DB를 위한 변수들 선언
+	// TODO : DB를 위한 변수들  선언
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
