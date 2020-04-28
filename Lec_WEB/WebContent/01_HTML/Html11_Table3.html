@@ -3,8 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <title>테이블 과제</title>
+
+<style>
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+td {
+	height: 100px;
+}
+</style>
+
 </head>
 <body>
+
+	<!-- 1번 테이블 -->
+	<table style="width: 100%">
+		<tr>
+			<td rowspan="3"></td>
+			<td colspan="3"></td>
+		</tr>
+		<tr>
+			<td colspan="3"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	<br>
+
+	<!-- 2번 테이블 -->
+	<table style="width: 100%">
+		<tr>
+			<td rowspan="3"></td>
+			<td colspan="3"></td>
+		</tr>
+		<tr>
+			<td colspan="2"></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	<br>
+
+	<!-- 3번 테이블 -->
+	<table style="width: 100%">
+		<tr>
+			<td colspan="2"></td>
+
+			<td rowspan="2" colspan="2"></td>
+			<td rowspan="3"></td>
+		</tr>
+		<tr>
+			<td colspan="2"></td>
+		</tr>
+
+		<tr>
+			<td colspan="2"></td>
+
+			<td></td>
+			<td></td>
+
+		</tr>
+	</table>
+	<br>
+	
+	<!-- 4번 테이블 -->
+	<table style="width: 100%">
+		<tr>
+			<td colspan="2" style="background-color: grey"></td>
+			
+			<td colspan="2"></td>
+			
+			<td colspan="2" style="background-color: yellow"></td>
+			<td rowspan="4" style="background-color: grey"></td>
+			
+		</tr>
+		
+		<tr>
+			<td></td>
+			<td colspan="3" rowspan="2" style = "background-color: red"></td>
+			
+			<td colspan="2" style="background-color: yellow""></td>
+			
+			
+		</tr>
+		
+		<tr>
+			<td rowspan="2" style="background-color: grey"></td>
+			
+			
+			<td></td>
+			<td></td>
+			
+		</tr>
+		
+		<tr>
+			
+			<td rowspan="2" style="background-color: black"></td>
+			<td colspan="2" style="background-color: grey"></td>
+			
+			<td colspan="2"></td>
+			
+			
+		</tr>
+		
+		<tr>
+			<td style="background-color: yellow"></td>
+		
+			<td colspan="2" style="background-color: grey"></td>
+			
+			<td colspan="2" style="background-color: blue"></td>
+			
+			<td style="background-color: red"></td>
+		</tr>
+		
+	
+	</table>
 
 </body>
 </html>
