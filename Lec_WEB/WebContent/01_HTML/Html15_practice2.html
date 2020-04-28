@@ -3,8 +3,202 @@
 <head>
 <meta charset="UTF-8">
 <title>캘린더 폼 작성</title>
+
+<style>
+h1{
+text-align: center;
+color: blue;
+
+}
+
+
+ul {
+		list-style-type: none; /*disc 모양 없애기*/
+		background-color: #999999;
+		overflow: hidden;
+		
+
+}
+
+li {
+		float: left; /*줄바꿈 했던 li를 일렬로 좌측정렬*/
+
+}
+
+li a {
+		text-decoration: none;
+		padding: 16px;
+		color: white;
+		display: block;
+
+}
+
+li a:hover{
+		background-color: #111111;
+
+}
+
+table, tr, th, td{
+border: 1px solid black;
+border-collapse: collapse;
+}
+
+th {
+background-color: #999999;
+}
+
+table#calendar td {
+height:30px;
+}
+
+
+</style>
+
 </head>
 <body>
+<ul>
+	<li><a href="#">정책차림표</a></li>
+	<li><a href="#">미리보는 지원사업</a></li>
+	<li><a href="#">마감임박 지원사업</a></li>
+	<li><a href="#">접수중인 지원사업</a></li>
+</ul>
+
+<h1>&lt;2015-06-17&gt;</h1>
+
+<form>
+<input type="radio"  name="type" value="all">전체
+<input type="radio"  name="type" value="venture">창업·벤처
+<input type="radio"  name="type" value="small_com">소상공인
+<input type="radio"  name="type" value="export">판로·수출
+<input type="radio"  name="type" value="rd">R&D
+<input type="radio"  name="type" value="finance">금융·세제
+<input type="radio"  name="type" value="hr">인력
+</form>
+<br>
+<table style="width:100%" id="calendar">
+<tr>
+<th>일</th>
+<th>월</th>
+<th>화</th>
+<th>수</th>
+<th>목</th>
+<th>금</th>
+<th>토</th>
+</tr>
+
+<tr>
+<td></td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+
+<tr>
+<td style="background-color: lightblue">7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+</tr>
+
+<tr>
+<td>14</td>
+<td>15</td>
+<td>16</td>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+</tr>
+
+<tr>
+<td>21</td>
+<td>22</td>
+<td>23</td>
+<td>24</td>
+<td>25</td>
+<td>26</td>
+<td>27</td>
+</tr>
+
+<tr>
+<td>28</td>
+<td>29</td>
+<td>30</td>
+<td style="background-color: lightgrey"></td>
+<td style="background-color: lightgrey"></td>
+<td style="background-color: lightgrey"></td>
+<td style="background-color: lightgrey"></td>
+</tr>
+
+
+</table>
+<br>
+
+<p>2015년 6월 7일, 전체 검색결과, 진행중인 사업은 총 614건입니다.</p>
+
+<table style="width:100%">
+<tr>
+<th>번호</th>
+<th>지원사업명</th>
+<th>주관부처</th>
+<th>신청기간</th>
+<th>조회</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>2015년 창조경제 벤처창업대전 정부포상 및 전시회 참가 신청</td>
+<td>중소기업청</td>
+<td>2015.06.04~2015.06.30</td>
+<td>731</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>2015년 창조경제 벤처창업대전 정부포상 및 전시회 참가 신청</td>
+<td>중소기업청</td>
+<td>2015.06.04~2015.06.30</td>
+<td>731</td>
+</tr>
+
+<tr>
+<td>614</td>
+<td>2015년 창조경제 벤처창업대전 정부포상 및 전시회 참가 신청</td>
+<td>중소기업청</td>
+<td>2015.06.04~2015.06.30</td>
+<td>731</td>
+</tr>
+
+<tr>
+<td>614</td>
+<td>2015년 창조경제 벤처창업대전 정부포상 및 전시회 참가 신청</td>
+<td>중소기업청</td>
+<td>2015.06.04~2015.06.30</td>
+<td>731</td>
+</tr>
+</table>
+<br>
+
+<form>
+<select name = 'monthPayment'>
+<option value='' selected>키워드</option>
+<option value='sub'>제목</option>
+<option value='cont'>내용</option>
+<option value='sub_cont'>제목+내용</option>
+<option value='author'>글쓴이</option>
+</select>
+<input type="text" size="70" >
+<button type="button">검색</button>
+
+</form>
+
+
 
 </body>
 </html>
