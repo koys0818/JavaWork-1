@@ -19,26 +19,32 @@ div {
 
 div#box1 {
     background: red;
-
-	/* TODO */
+	/*transition: width 2s;*/ /*width 값 변화발생시 2초에 걸쳐 진행*/
+	transition: width 2s, height 1s; /*복수 property에 지정가능*/
 	
 }
 
 div#box1:hover {
 
-	/* TODO */
+	width: 300px;
+	height: 200px;
+	
+	
 
 }
 
 div#box2 {
 	background-color: blue;
+	transition: width 2s, height 2s, background-color 2s, transform 2s;
 
-	/* TODO */
 }
 
 div#box2:hover{
 
-	/* TODO */
+	width: 200px;
+	height: 200px;
+	background-color: yellow;
+	transform: rotate(100deg);
 
 }
 /*  transform : 관련 값
@@ -52,12 +58,12 @@ div#box2:hover{
 
 div#box3{
 	background-color: green;
+	transition: margin 2s;
 
-	/* TODO */
 }
 
 div#box3:hover{
-	/* TODO */
+	margin-left : 100px;
 }
 
 </style>
