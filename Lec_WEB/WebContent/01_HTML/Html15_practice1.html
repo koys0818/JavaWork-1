@@ -10,6 +10,14 @@ div#person, div#address, div#payment {
 
 }
 
+p {
+display:inline-block;
+width:120px;
+height:10px;
+font-weight: bold;
+
+}
+
 </style>
 
 </head>
@@ -17,23 +25,22 @@ div#person, div#address, div#payment {
 
 <form>
 <h3>주문자 정보 입력</h3>
-<br>
 <div id="person">
 
-주문자정보
+<p>주문자정보</p>
 <input type="text"  size="55" value="비회원으로 상품구매 시  반드시 본인인증을 하셔야 합니다 ." disabled>
 <button type="button" >휴대폰인증</button>
 <button type="button" >아이핀인증</button>
 <br>
 
-주소
+<p>주소</p>
 <input type="text" size="15" disabled>
 <button type="button">주소찾기</button><br>
-<input type="text" size="120" disabled><br>
-<input type="text" size="120" >
+<input type="text" size="100" disabled style="margin-left: 125px;"><br>
+<input type="text" size="100" style="margin-left: 125px;">
 <br>
 
-휴대전화
+<p>휴대전화</p>
 <select name = 'phone11'>
 <option value='010' selected>010</option>
 <option value='010'>011</option>
@@ -44,10 +51,10 @@ div#person, div#address, div#payment {
 <input type="number" name="phone12">
 -
 <input type="number" name="phone13">
-<input type="checkbox" name="sms" value="agree">SMS수신동의
+<input type="checkbox" name="sms" value="agree" checked>SMS수신동의
 <br>
 
-이메일
+<p>이메일</p>
 <input type="text" name="email1" size=30>
 @
 <input type="text" name="email2" size=30>
@@ -61,32 +68,31 @@ div#person, div#address, div#payment {
 
 <br>
 </div>
-<p style="font-size: 10px">*SK플래닛(주)는 통신판매중개자로서 통신판매자의 당사자가 아니며, 개별판매자가 등록한 상품정보 및 거래에 대해 SK플래닛(주)는 일체의 책임을 지지 않습니다.</p>
+<p style="font-size: 10px; display:inline;">*SK플래닛(주)는 통신판매중개자로서 통신판매자의 당사자가 아니며, 개별판매자가 등록한 상품정보 및 거래에 대해 SK플래닛(주)는 일체의 책임을 지지 않습니다.</p>
 <br>
 
 <h3>배송지 정보 입력</h3>
-<br>
 <div id="address">
-배송지선택
+<p>배송지선택</p>
 <button type="button" >주문자 정보와 동일</button>
 
 <br>
 
-받으시는분
+<p>받으시는분</p>
 <input type="text" size="15">
 
 <br>
 
-주소
+<p>주소</p>
 <input type="text" size="15" disabled>
 <button type="button">주소찾기</button>
 <input type="checkbox" name="addAddress" value="add">배송지목록에 추가
 <br>
-<input type="text" size="120" disabled><br>
-<input type="text" size="120" >
+<input type="text" size="120" disabled style="margin-left: 125px;"><br>
+<input type="text" size="120"  style="margin-left: 125px;">
 <br>
 
-휴대전화
+<p>휴대전화</p>
 <select name = 'phone21'>
 <option value='010' selected>010</option>
 <option value='010'>011</option>
@@ -97,31 +103,31 @@ div#person, div#address, div#payment {
 <input type="number" name="phone22">
 -
 <input type="number" name="phone23">
-<input type="checkbox" name="safephone" value="agree">안심번호 사용(무료)
+<input type="checkbox" name="safephone" value="agree" checked>안심번호 사용(무료)
 <input type="checkbox" name="homephone" value="add">집전화 추가입력
 <br>
 
-배송지요구사항
+<p>배송지요구사항</p>
 <input type="text" size="100">
+<span style="font-size: 12px; color:grey;">(0자~50자)</span>
 <br>
-*특정한 배송일을 지정하고자 할 경우 판매자와 연락하여 배송일을 확인해주시기 바랍니다.
+<p style="font-size: 10px; display:inline; color: blue; margin-left: 125px;">*특정한 배송일을 지정하고자 할 경우 판매자와 연락하여 배송일을 확인해주시기 바랍니다.</p>
 <br>
 
 </div>
 
 <h3>결제 정보 입력</h3>
-<br>
 <div id="payment">
-신용카드
-<input type="radio"  name="pay" value="credit_normal">신용카드(일반)
+<p>신용카드</p>
+<input type="radio"  name="pay" value="credit_normal" checked><span style="font-weight: bold;">신용카드(일반)</span>
 <input type="radio"  name="pay" value="credit_company">신용카드(법인)
-<input type="radio"  name="pay" value="credit_foreign">해외발급카드
+<input type="radio"  name="pay" value="credit_foreign" disabled>해외발급카드
 <br>
-현금결제
+<p>현금결제</p>
 <input type="radio"  name="pay" value="deposit">무통장입금
 <input type="radio"  name="pay" value="transfer">실시간계좌이체
 <br>
-카드선택
+<p>카드선택</p>
 <select name = 'card'>
 <option value='' selected>선택하세요</option>
 <option value='bc'>bc카드</option>
@@ -130,7 +136,7 @@ div#person, div#address, div#payment {
 <option value='kb'>kb카드</option>
 </select>
 <br>
-할부방식
+<p>할부방식</p>
 <select name = 'monthPayment'>
 <option value='0' selected>일시불</option>
 <option value='3'>3개월</option>
@@ -138,8 +144,8 @@ div#person, div#address, div#payment {
 <option value='12'>12개월</option>
 </select>
 <br>
-결제안내
-<button type="button" >간편결제안내</button>
+<p>결제안내</p>
+<button type="button"  style="color: red;">간편결제안내</button>
 <button type="button" >공인인증안내</button>
 <button type="button" >안전결제안내</button>
 <button type="button" >안심클릭안내</button>

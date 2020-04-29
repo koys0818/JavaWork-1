@@ -10,7 +10,7 @@ overflow 는 height 값을 가진 block 속성 element 에 대해서만 동작�
 	visible : (기본값) clip 발생 안하고, 그냥 box 영역 밖에 보임
 	hidden : clip 발생, 넘치는 content 는 안 보임
 	scroll : clip 발생하나 scroll 바 등장하여 볼수는 있게 한다
-	auto : overflow 발생시에만 scoll 바 등장
+	auto : overflow 발생시에만 scroll 바 등장
 	initial : 기본값 전환
 	inherit : 부모 element 의 overflow 값 계승
 
@@ -24,33 +24,34 @@ y축(수직) overflow 값에 대해서만 설정할때는 overflow-y
 
 
  -->
+
+  
 <style>
-div.ex1 {
+
+div {
   background-color: lightblue;
   width: 110px;
   height: 110px;
-  /* TODO */
+}
+
+div.ex1 {
+overflow: scroll;
+
 }
 
 div.ex2 {
-  background-color: lightblue;
-  width: 110px;
-  height: 110px;
-  /* TODO */
+overflow: hidden;
+
 }
 
 div.ex3 {
-  background-color: lightblue;
-  width: 110px;
-  height: 110px;
-  /* TODO */
+overflow:auto;
+
 }
 
 div.ex4 {
-  background-color: lightblue;
-  width: 110px;
-  height: 110px;
-  /* TODO */
+overflow:visible;
+
 }
 </style>
 </head>
