@@ -1,7 +1,7 @@
 package com.lec.java.operator01;
 
 /*
- * 연산자 관련 일반사항
+ * 연산자 관련 일반사항이
  * 
  * 연산 Operation
  * 연산자  Operator
