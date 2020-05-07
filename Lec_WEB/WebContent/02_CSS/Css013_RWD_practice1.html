@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            
+        }
+
+        h1::after {
+            content: "Mobile";
+        }
+
+        div {
+            width: 100%;
+            height: 50px;
+            border: 5px solid white;
+            float: left;
+        }
+
+        .a {
+            background-color: grey;
+            text-align: center;
+            display: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .b {
+            background-color: violet;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .b::after {
+            content: "12";
+        }
+
+        .c {
+            background-color: lightblue;
+        }
+
+        .c::after {
+            content: "12";
+        }
+
+        .d {
+            background-color: whitesmoke;
+            height: 150px;
+        }
+
+        .d::after {
+            content: "12";
+        }
+
+        .e {
+            background-color: beige;
+            width: 33.33%;
+
+        }
+
+        .e::after {
+            content: "4";
+        }
+
+        .f {
+            background-color: green;
+            width: 33.33%;
+
+        }
+
+        .f::after {
+            content: "4";
+        }
+
+        .g {
+            background-color: burlywood;
+            width: 33.33%;
+
+        }
+
+        .g::after {
+            content: "4";
+        }
+
+        .h {
+            background-color: yellow;
+        }
+
+        .h::after {
+            content: "12";
+        }
+
+
+
+        @media screen and (min-width: 600px) {
+            h1::after {
+                content: "Tablet";
+            }
+
+            .a {
+                width: 16.66%;
+                display: initial;
+            }
+
+            .a::after {
+                content: "2";
+            }
+
+            .b {
+                width: 83.33%;
+            }
+
+            .b::after {
+                content: "10";
+            }
+
+            .c {
+                width: 16.66%;
+                height: 150px;
+            }
+
+            .c::after {
+                content: "2";
+            }
+
+            .d {
+                width: 66.66%;
+            }
+
+            .d::after {
+                content: "8";
+            }
+
+            .e {
+                width: 16.66%;
+                height: 75px;
+            }
+
+            .e::after {
+                content: "2";
+            }
+
+            .f {
+                width: 16.66%;
+                height: 75px;
+            }
+
+            .f::after {
+                content: "2";
+            }
+
+            .g {
+                width: 25%;
+            }
+
+            .g::after {
+                content: "3";
+            }
+
+            .h {
+                width: 75%;
+            }
+
+            .h::after {
+                content: "9";
+            }
+
+        }
+
+        @media screen and (min-width: 768px) {
+            h1::after {
+                content: "PC";
+            }
+
+            .a {
+                width: 33.33%;
+            }
+
+            .a::after {
+                content: "4";
+            }
+
+            .b {
+                width: 66.66%;
+            }
+
+            .b::after {
+                content: "8";
+            }
+
+            .c {
+                width: 16.66%;
+            }
+
+            .d {
+                width: 50%;
+            }
+
+            .d::after {
+                content: "6";
+            }
+
+            .e {
+                width: 33.33%;
+                height: 50px;
+            }
+
+            .e::after {
+                content: "4";
+            }
+
+            .f {
+                width: 33.33%;
+                height: 50px;
+            }
+
+            .f::after {
+                content: "4";
+            }
+
+            .g {
+                width: 33.33%;
+                height: 50px;
+            }
+
+            .g::after {
+                content: "4";
+            }
+
+            .h {
+                width: 100%;
+            }
+
+            .h::after {
+                content: "12";
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h1></h1>
+    <div class="a">A:</div>
+    <div class="b">B:</div>
+    <div class="c">C:</div>
+    <div class="d">D:</div>
+    <div class="e">E:</div>
+    <div class="f">F:</div>
+    <div class="g">G:</div>
+    <div class="h">H:</div>
+</body>
+
+</html>
