@@ -1,0 +1,118 @@
+/* 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    line-height: 16px;
+    color: #909090;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    
+}
+a:visited {
+    text-decoration: none;
+}
+
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+/* 전체크기 고정 */
+.wrap {
+    width: 720px;
+    height: 480px;
+    margin: 0 auto;
+    
+}
+
+/* 페이지 상단 */
+#top{
+    overflow: hidden;
+}
+
+#side_content{
+    float: left;
+    width: 240px;
+    height: 295px;
+    text-align: right;
+    padding-left: 80px;
+    padding-top: 62px;
+    padding-right: 10px;
+}
+
+#side_content h2{
+    color: green;
+    font-weight: bold;
+}
+
+#main_content{
+    float: left;
+    width: 480px;
+    height: 295px;
+    text-align: left;
+    padding-right: 120px;
+    padding-top: 62px;
+    padding-left: 10px;
+}
+
+#main_content h1{
+    color: green;
+    font-size: 26px;
+    font-weight: bold;
+    padding-top: 124px;
+}
+#main_content h2{
+    color: green;
+    font-size: 20px;
+}
+
+/*페이지 하단*/
+#bottom{
+    overflow: hidden;
+}
+
+header{
+    float: left;
+    width: 240px;
+    height: 185px;
+    background-color: #0C714C;
+    text-align: right;
+    padding-right: 10px;
+}
+
+header h1{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+header h2{
+    font-size: 16px;
+}
+
+nav{
+    float: left;
+    width: 480px;
+    height: 185px;
+    background-color: #237657;
+}
+
+nav ul {
+    overflow: hidden;
+}
+
+nav ul li{
+    float: left;
+    margin: 0 10px;
+}
+
+nav ul li a{
+}

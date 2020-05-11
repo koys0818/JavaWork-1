@@ -3,9 +3,9 @@
     margin: 0;
     padding: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 11px;
+    font-size: 1em;
     font-weight: normal;
-    line-height: 16px;
+    line-height: 1.45em;
     color: #909090;
     box-sizing: border-box;
 }
@@ -27,92 +27,178 @@ li {
 }
 
 /* 전체크기 고정 */
-.wrap {
-    width: 720px;
-    height: 480px;
+#wrap {
+    width: 1080px;
+    height: 720px;
     margin: 0 auto;
     
 }
 
+
 /* 페이지 상단 */
-#top{
-    overflow: hidden;
+#top::after{
+    content: '';
+    display: table;
+    clear: both;    
 }
 
-#side_content{
+#left_content{
     float: left;
-    width: 240px;
-    height: 295px;
+    width: 360px;
+    height: 442.5px;
     text-align: right;
-    padding-left: 80px;
-    padding-top: 62px;
-    padding-right: 10px;
+    padding-left: 120px;
+    padding-top: 93px;
+    padding-right: 15px;
 }
 
-#side_content h2{
-    color: green;
+#left_content h2{
+    color: #237657;
     font-weight: bold;
 }
 
-#main_content{
+#right_content{
     float: left;
-    width: 480px;
-    height: 295px;
+    width: 720px;
+    height: 442.5px;
     text-align: left;
     padding-right: 120px;
-    padding-top: 62px;
-    padding-left: 10px;
+    padding-top: 243px;
+    padding-left: 15px;
 }
 
-#main_content h1{
-    color: green;
-    font-size: 26px;
+#right_content h1{
+    color: #0C714C;
+    font-size: 2.43em;
     font-weight: bold;
-    padding-top: 124px;
 }
-#main_content h2{
-    color: green;
-    font-size: 20px;
+#right_content h2{
+    color: #237657;
+    font-size: 1.87em;
 }
 
 /*페이지 하단*/
-#bottom{
-    overflow: hidden;
+#bottom::after{
+    content: '';
+    display: table;
+    clear: both;  
 }
 
 header{
     float: left;
-    width: 240px;
-    height: 185px;
+    width: 360px;
+    height: 277.5px;
     background-color: #0C714C;
     text-align: right;
-    padding-right: 10px;
+    padding-right: 15px;
 }
 
 header h1{
     font-weight: bold;
-    font-size: 20px;
+    font-size: 1.87em;
 }
 
 header h2{
-    font-size: 16px;
+    font-size: 1.5em;
 }
 
 nav{
     float: left;
-    width: 480px;
-    height: 185px;
+    width: 720px;
+    height: 277.5px;
     background-color: #237657;
 }
 
-nav ul {
-    overflow: hidden;
+nav ul::after {
+    content: '';
+    display: table;
+    clear: both;  
 }
 
 nav ul li{
     float: left;
-    margin: 0 10px;
+    margin: 5px 10px;
 }
 
 nav ul li a{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+nav ul li a:hover{
+    color: #222222;
+}
+
+nav ul li a:active{
+    color: #555555;
+}
+
+/*920px 이하일때 적용*/
+@media screen and (max-width: 920px){
+    #wrap{
+        width: 96%;
+    }
+
+    #left_content{
+        width: 96%;
+        height: auto;
+        float: none;
+        text-align: left;
+        padding: 5% 5%;
+    }    
+
+
+    #right_content{
+        width: 96%;
+        height: auto;
+        float: none;
+        text-align: left;
+        padding: 5% 5%;
+    }
+
+    header{
+        width: 96%;
+        height: auto;
+        float: none;
+        text-align: left;
+        padding: 5% 5%;
+     
+    }
+
+    nav{
+        width: 96%;
+        height: auto;
+        float: none;
+        padding: 5% 5%;
+    }
+    
+
+}
+
+/*720px 이하일때 적용*/
+@media screen and (max-width: 720px){
+
+    header{
+        display: none;
+        /* width: 96%;
+        height: auto;
+        float: none;
+        text-align: left;
+        padding: 5% 5%;
+      */
+    }
+
+    
+
+    nav ul li{
+        float: none;
+        margin: 1% 0;
+        text-align: right;
+    }
+
+    nav ul li a{
+        display: inline-block;
+        width: 40%;
+    }
+    
 }
