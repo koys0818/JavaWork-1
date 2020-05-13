@@ -58,91 +58,93 @@ $(document).ready(function(){
 
 	// 어떤 버튼이든지 눌리면 selected 클래스 제거
 	$("button").click(function(){
-		// TODO  
+		$("*").removeClass("selected");
 	});
 	
 	//---------------------------------------------
 	// parent()
 	$("#btn11").click(function(){
-		// TODO  
+		$("span").parent().addClass("selected");
 	});
 	
 	// parents()
 	$("#btn12").click(function(){
-		// TODO  
+		$("span").parents().addClass("selected"); 
 	});
 	
 	// parents("ul")
 	$("#btn13").click(function(){
-		// TODO  
+		// "span" 의 조상중에서 "ul" 만 선택됨.
+		$("span").parents("ul").addClass("selected");
 	});
 	
 	// parentesUntil()
 	$("#btn14").click(function(){
-		// TODO  
+		// "span" 상위 element 들중 "div" 전까지 선택됨.
+		$("span").parentsUntil("div").addClass("selected"); 
 	});
 	
 	//-----------------------------------------
 	//
 	// children
 	$("#btn21").click(function(){
-		// TODO  
+		$("div").children().addClass("selected"); 
 	});
 	
 	// children("..")
 	$("#btn22").click(function(){
-		// TODO  
+		$("div").children("p").addClass("selected"); 
 	});
 	
 	// find()
 	$("#btn23").click(function(){
-		// TODO  
+		$("div").find("span").addClass("selected");  
 	});
 	
 	// find(*)
 	$("#btn24").click(function(){
-		// TODO  
+		$("div").find("*").addClass("selected");
 	});
 	
 	//-----------------------------------------
 	// siblings()
 	$("#btn31").click(function(){
-		// TODO  
+		$("#sibling h2").siblings().addClass("selected"); 
 	});
 
 	$("#btn32").click(function(){
-		// TODO  
+		$("#sibling h2").siblings("p").addClass("selected");  
 	});
 
 	// next()
 	$("#btn33").click(function(){
-		// TODO  
+		$("#sibling h2").next().addClass("selected");  
 	});
 	
 	// nextAll()
 	$("#btn34").click(function(){
-		// TODO  
+		$("#sibling h2").nextAll().addClass("selected");   
 	});
 	
 	// nextUntil(..)
 	$("#btn35").click(function(){
-		// TODO  
+		$("#sibling h2").nextUntil("h6").addClass("selected");  
 	});
 	
 	// TODO.. 나머지는 직접 해보자
 	// prev()
 	$("#btn36").click(function(){
-		// TODO  
+		$("#sibling h2").prev().addClass("selected"); 
 	});
 	
 	// prevAll()
 	$("#btn37").click(function(){
-		// TODO  
+		$("#sibling h2").prevAll().addClass("selected");   
 	});
 	
 	// prevUntil()
 	$("#btn38").click(function(){
-		// TODO  
+		$("#sibling h2").prevUntil("p").addClass("selected");  
 	});
 	
 });
@@ -166,7 +168,7 @@ $(document).ready(function(){
       </p> 
   </div>
   
-	<div id="sibling">div (parent)
+	<div id="sibling">div (parent) #sibling
 		<p>p</p>
 		<span>span</span>
 		<h2>h2</h2>

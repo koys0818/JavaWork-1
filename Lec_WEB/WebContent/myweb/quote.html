@@ -6,26 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>type idea</title>
     <link href="CSS/default.css" rel="stylesheet" type="text/css">
+    
 </head>
 
 <body>
     <div id="wrap">
         <div id="top">
             <article id="left_content">
-                
+                <h1></h1>           
                 
 
             </article>
 
             
-
+            
             <article id="right_content">
-
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, vitae cumque facilis eligendi
-                quae
-                suscipit mollitia natus rerum nostrum exercitationem libero perferendis nemo voluptates. Magni
-                temporibus error cupiditate doloribus atque!
-                libero perferendis nemo voluptates.
+                <h3></h3>              
 
             </article>
 
@@ -50,6 +46,53 @@
         </div>
 
     </div>
+
+
+    <!-- Quote API를 이용하여 명언을 가져오기 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url : "http://quotes.stormconsultancy.co.uk/random.json",
+                type : "GET",
+                cache : false,
+                success : function(data, status){
+                    if(status == "success") parseJSON(data);
+
+                }
+
+            });
+        });
+
+        function parseJSON(data){
+            var author = data.author
+            var quote = data.quote;
+
+            var $leftH1 = $("#left_content").find("h1");
+            var $rightH3 = $("#right_content").find("h3");
+
+                   
+            $leftH1.css({'opacity' : 0});
+            $rightH3.css({'opacity' : 0});
+
+            $leftH1.text(author);
+            $rightH3.text(quote);
+
+            $rightH3.animate({'opacity' : 1}, 1000);
+
+            $.when($rightH3).then(function(){
+                $leftH1.animate({'opacity' : 1}, 1000);
+            }).then(function(){
+                $leftH1.animate({'bottom' : 65}, 300);
+            }
+            ).then(function(){
+                $leftH1.animate({'bottom' : 60}, 300);
+            });
+            
+            
+        }
+    </script>
+
 </body>
 
 </html>

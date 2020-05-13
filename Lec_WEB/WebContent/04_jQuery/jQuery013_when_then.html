@@ -49,7 +49,32 @@ $(document).ready(function(){
 		  var $box2 = $(".box2");
 		  var $box3 = $(".box3");
 
-		  // TODO
+		//   $box1.animate({left : "200px"}, 1000);
+		//   $box2.animate({top : "0px"}, 1500, function(){
+		// 	$box3.animate({top : "150px"}, 2000);
+		//   });
+
+			//방법 : delay()
+		  $box1.animate({left : "200px"}, 1000);
+		  $box2.animate({top : "0px"}, 1500);
+		//   $box3.delay(1500).animate({top : "150px"}, 2000);
+
+		  //box1와 box2 중 누가 먼저 끝날지 알수없다면?
+		  //얼마후에 끝날지도 알수 없다면??
+
+		  //방법
+		  //$.when() 사용
+		  //이벤트들이 끝나면 수행하는 Promise 객체리턴
+		  //thenable object(다른말로 deferred object)
+		  $.when($box1, $box2).then(function(){
+			//   alert("완료");
+			$box3.animate({top: "150px"}, 2000);
+		  }).then(function(){
+			//   alert("완료");
+			$box3.animate({top: "200px"}, 2000);
+		  })
+		  ;
+		  
 		  
 	});	
 });
