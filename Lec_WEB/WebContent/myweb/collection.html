@@ -56,18 +56,24 @@
     <!-- Unsplash API를 이용하여 사진을 가져오기 -->
     <!-- 1시간에 50회 제한!!! -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script>   
+    var jsonData; 
+
         $(document).ready(function(){
-            var api_key = "NFp6H9odsFWwgJLtL6yifEy8wNOcVOhsmIVCqrsR9Lw";          
+            var api_key = "NFp6H9odsFWwgJLtL6yifEy8wNOcVOhsmIVCqrsR9Lw";
+            var page_num = parseInt(Math.random()*20) + 1;
+                         
 
 
             $.ajax({                
-                url : "https://api.unsplash.com/collections/featured?page=1&per_page=30&client_id=" + api_key,
+                url : "https://api.unsplash.com/collections/featured?page=" + page_num + "&per_page=30&client_id=" + api_key,
                 type : "GET",
                 cache : false,
                 success : function(data, status){
-                    if(status == "success") parseJSON(data);
+                    if(status == "success") {
+                        jsonData = data;
+                        parseJSON(jsonData);}
 
                 }
 
@@ -76,17 +82,15 @@
 
         var i = 0;
 
-        function parseJSON(data){
+        function parseJSON(jsonData){            
+            var image1_url = jsonData[i].cover_photo.urls.thumb;
+            var h31_title = jsonData[i++].title;
 
-            
-            var image1_url = data[i].cover_photo.urls.thumb;
-            var h31_title = data[i++].title;
+            var image2_url = jsonData[i].cover_photo.urls.thumb;
+            var h32_title = jsonData[i++].title;
 
-            var image2_url = data[i].cover_photo.urls.thumb;
-            var h32_title = data[i++].title;
-
-            var image3_url = data[i].cover_photo.urls.thumb;
-            var h33_title = data[i++].title;
+            var image3_url = jsonData[i].cover_photo.urls.thumb;
+            var h33_title = jsonData[i++].title;
             
           
             var $img1 = $("#image1");
@@ -103,13 +107,13 @@
             $h32.text(h32_title);
 
             $img3.css({"background-image": "url(" + image3_url + ")"});
-            $h33.text(h33_title);
-
-            $("button").click(function(){
-                parseJSON(data);
-            });            
+            $h33.text(h33_title);                  
             
         }
+
+        $("button").click(function(){
+                parseJSON(jsonData);
+            });     
     </script>
 
 </body>

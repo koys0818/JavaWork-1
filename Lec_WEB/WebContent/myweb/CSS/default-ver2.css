@@ -1,0 +1,17 @@
+@charset "UTF-8";
+#wrapper{
+    padding-top: 20px;
+}
+
+#top{
+    height: 480px;
+}
+
+#side_content{
+    height: 30%;
+}
+
+#main_content{
+    height: 70%;
+
+}

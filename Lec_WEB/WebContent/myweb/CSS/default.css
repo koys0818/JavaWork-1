@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /* 초기화 */
 * {
     margin: 0;
@@ -175,10 +177,12 @@ nav ul li a{
 
 nav ul li a:hover{
     color: #222222;
+    cursor: pointer;
 }
 
 nav ul li a:active{
     color: #555555;
+    cursor: pointer;
 }
 
 /*920px 이하일때 적용*/
