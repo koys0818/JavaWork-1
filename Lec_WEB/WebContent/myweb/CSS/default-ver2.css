@@ -1,17 +1,35 @@
 @charset "UTF-8";
+
 #wrapper{
-    padding-top: 20px;
+    
 }
 
 #top{
-    height: 480px;
+    height: 426.66px;  
+    
+}
+
+#bottom{
+    height: 213.33px;    
 }
 
 #side_content{
-    height: 30%;
+    height: 142.22px;
+    
 }
 
 #main_content{
-    height: 70%;
+    height: 284.44px;    
+
+}
+
+#logo{
+    height: 71.11px;
+    display: none;      
+
+}
+
+#navi{
+    height: 142.22px;    
 
 }

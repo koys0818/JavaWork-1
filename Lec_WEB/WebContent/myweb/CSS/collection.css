@@ -1,15 +1,15 @@
 @charset "UTF-8";
 
 #main_content img{
-    width: 280px;
-    max-height: 400px;
+    max-width: 95%;
+    max-height: 95%;
 }
 
 /* Next & previous buttons */
 .prev, .next {
     cursor: pointer;
     position: absolute;
-    top: 50%;
+    top: 30%;
     width: auto;
     margin-top: -22px;
     padding: 16px;
@@ -19,6 +19,10 @@
     transition: 0.6s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
+  }
+
+  .prev{
+    left: 0;
   }
   
   /* Position the "next button" to the right */

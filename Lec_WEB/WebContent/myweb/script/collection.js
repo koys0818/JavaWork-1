@@ -37,7 +37,7 @@ function parseJSON(jsonData, num) {
     var img_title = jsonData[photo_index].title;    
 
     $("#main_img").attr('src', img_url);
-    $("h4").text(img_title);
+    $("h6").text(img_title);
 }
 
 function plusSlides(num) {
