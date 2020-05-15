@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+#author{
+  display: inline-block;
+  vertical-align: middle;
+  color: #295651;
+  
+} 
+
+#quote{
+  display: inline-block;
+  vertical-align: middle;
+  color: #232941;
+
+  
+}
+
+#main_content{
+  padding: 0 30%;
+}

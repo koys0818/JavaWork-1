@@ -13,8 +13,8 @@ $(document).ready(function(){
 
 function parseJSON(data){   
 
-    var $author = $("#side_content").find("h4");
-    var $quote = $("#main_content").find("h6");
+    var $author = $("#side_content").find("#author");
+    var $quote = $("#main_content").find("#quote");
 
            
     $author.css({'opacity' : 0});

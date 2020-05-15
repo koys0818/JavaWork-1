@@ -1,9 +1,22 @@
 @charset "UTF-8";
 
-#main_content img{
-    max-width: 95%;
-    max-height: 95%;
+#main_content{
+  /* background-image: url(../images/avatar5.png); */
+  /* background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat; */
 }
+
+/* div#img_frame{
+  max-height: 610px;
+  max-width: 455.33;
+  overflow: hidden;
+}
+#main_content img{  
+  object-fit: fill;
+    max-width: 100%;
+    height: auto;
+} */
 
 /* Next & previous buttons */
 .prev, .next {

@@ -34,10 +34,15 @@ function parseJSON(jsonData, num) {
     photo_index += num;
 
     var img_url = jsonData[photo_index].cover_photo.urls.small;
-    var img_title = jsonData[photo_index].title;    
+    var img_url = jsonData[photo_index].preview_photos[0].urls.small;
+    var img_title = jsonData[photo_index].title;
+    var img_dcription = jsonData[photo_index].description;
+    var img_link = jsonData[photo_index].links.html;
 
     $("#main_img").attr('src', img_url);
-    $("h6").text(img_title);
+    $("#img_title").text(img_title);
+    $("#img_dcription").text(img_dcription);
+    // $(".img_link").attr('href', img_link);
 }
 
 function plusSlides(num) {
