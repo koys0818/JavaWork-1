@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.3/fabric.min.js"></script>
+    <link rel="stylesheet" href="CSS/default.css">
+    <link rel="stylesheet" href="CSS/mind.css">
+    <script src="script/mind.js"></script>
+
+
+    <title>Type Idea</title>
+</head>
+
+<body>
+    <div id="wrapper" class="">
+
+        <div id="top" class="">
+            <div id="side_content" class="">                
+                    <canvas id="mainCanvas" width="400" height="442.47"></canvas>
+
+            </div>
+            <div id="main_content" class="">
+
+                <form action="" onsubmit="return false">
+                    <div>
+                        <label for="to">To</label>
+                        <input id="to" type="text" onkeydown="onlyAlphabet(this)" maxlength="12" disabled>
+                    </div>
+
+                    <div>
+                        <label for="how">How</label>
+                        <select id="how" name="how">
+                            <option value="add">Add</option>
+                            <option value="remove">Subtract</option>                            
+                            <option value="link">Link</option>                            
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="idea">Idea</label>
+                        <input id="idea" type="text" onkeydown="onlyAlphabet(this)" maxlength="12" required>
+                    </div>
+
+                <div>  
+                    <button type="button" id="btnClear">clear</button>                  
+                    <button type="submit" id="btnExpand">expand</button>
+                    
+                </div>
+
+
+                </form>
+
+            </div>
+        </div>
+
+
+        <div id="bottom" class="">
+            <div id="logo-area" class="">
+                <div id="logo" class="">
+                    <h5>Type Idea</h5>
+                </div>
+            </div>
+
+            <div id="nav" class="">
+
+                <nav class="nav-bar">
+                    <a class="nav-item" href="#">IDEA</a>
+                    <a class="nav-item" href="wisdom.html">WISDOM</a>
+                    <a class="nav-item" href="collection.html">COLLECTION</a>
+                    <a class="nav-item" href="mind.html">MIND</a>
+                </nav>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</body>
+
+</html>

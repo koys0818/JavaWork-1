@@ -41,8 +41,9 @@ function parseJSON(jsonData, num) {
 
     $("#main_img").attr('src', img_url);
     $("#img_title").text(img_title);
-    $("#img_dcription").text(img_dcription);
-    // $(".img_link").attr('href', img_link);
+    $("#img_dcription").text(img_dcription);      
+    $('#loading').hide();
+       
 }
 
 function plusSlides(num) {
