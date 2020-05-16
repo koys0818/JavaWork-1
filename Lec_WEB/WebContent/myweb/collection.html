@@ -1,120 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>type idea</title>
-    <link href="CSS/default.css" rel="stylesheet" type="text/css">
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="CSS/default.css">
+    <link rel="stylesheet" href="CSS/collection.css">
+    <script src="script/collection.js"></script>
+
+
+    <title>Type Idea</title>
 </head>
 
 <body>
-    <div id="wrap">
-        <div id="top">
-            <article id="left_content">
-                <h3 id="h31">1</h3>           
-                <h3 id="h32">2</h3>           
-                <h3 id="h33">3</h3>           
-                
+    <div id="wrapper" class="">
 
-            </article>
+        <div id="top" class="">
+            <div id="side_content" class="">
+                <h5 id="img_title">Title</h5>
+                <!-- <h6 id="img_dcription">Image description.</h6> -->
 
-            
-            
-            <article id="right_content">
-                <div id="image1"></div>
-                <div id="image2"></div>
-                <div id="image3"></div>
-                <button>&gt;</button>             
+            </div>
+            <div id="main_content" class="">
 
-            </article>
+                <a href="#" class="img_link"><img id="main_img" src="images/cars1.jpg" alt="photo" class=""></a>
 
-            
-
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
         </div>
 
-        <div id="bottom">
-            <header>
-                <h1>type idea</h1>
-                <h2>expand your mind</h2>
-            </header>
-         
-            <nav>
-                <ul>
-                    <li><a href="index.html">IDEA</a></li>
-                    <li><a href="quote.html">QUOTE</a></li>
-                    <li><a href="#">COLLECTION</a></li>
-                    <li><a href="mind.html">MIND</a></li>
-                </ul>
-            </nav>
+
+        <div id="bottom" class="">
+            <div id="logo-area">
+                <div id="logo" class="">
+                    <h5>Type Idea</h5>
+                </div>
+            </div>
+
+            <div id="nav" class="">
+
+                <nav class="nav-bar">
+                    <a class="nav-item" href="index.html">IDEA</a>
+                    <a class="nav-item" href="wisdom.html">WISDOM</a>
+                    <a class="nav-item" href="#">COLLECTION</a>
+                    <a class="nav-item" href="#">MIND</a>
+                </nav>
+            </div>
         </div>
+
 
     </div>
 
 
-    <!-- Unsplash API를 이용하여 사진을 가져오기 -->
-    <!-- 1시간에 50회 제한!!! -->
-
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-    <script>   
-    var jsonData; 
-
-        $(document).ready(function(){
-            var api_key = "NFp6H9odsFWwgJLtL6yifEy8wNOcVOhsmIVCqrsR9Lw";
-            var page_num = parseInt(Math.random()*20) + 1;
-                         
-
-
-            $.ajax({                
-                url : "https://api.unsplash.com/collections/featured?page=" + page_num + "&per_page=30&client_id=" + api_key,
-                type : "GET",
-                cache : false,
-                success : function(data, status){
-                    if(status == "success") {
-                        jsonData = data;
-                        parseJSON(jsonData);}
-
-                }
-
-            });
-        });
-
-        var i = 0;
-
-        function parseJSON(jsonData){            
-            var image1_url = jsonData[i].cover_photo.urls.thumb;
-            var h31_title = jsonData[i++].title;
-
-            var image2_url = jsonData[i].cover_photo.urls.thumb;
-            var h32_title = jsonData[i++].title;
-
-            var image3_url = jsonData[i].cover_photo.urls.thumb;
-            var h33_title = jsonData[i++].title;
-            
-          
-            var $img1 = $("#image1");
-            var $img2 = $("#image2");
-            var $img3 = $("#image3");
-            var $h31 = $("#h31");
-            var $h32 = $("#h32");
-            var $h33 = $("#h33");
-            
-            $img1.css({"background-image": "url(" + image1_url + ")"});
-            $h31.text(h31_title);
-
-            $img2.css({"background-image": "url(" + image2_url + ")"});    
-            $h32.text(h32_title);
-
-            $img3.css({"background-image": "url(" + image3_url + ")"});
-            $h33.text(h33_title);                  
-            
-        }
-
-        $("button").click(function(){
-                parseJSON(jsonData);
-            });     
-    </script>
 
 </body>
 

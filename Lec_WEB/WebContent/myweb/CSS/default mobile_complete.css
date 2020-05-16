@@ -41,6 +41,7 @@ li {
     position: relative;
     height: 640px;
     overflow: hidden;
+    margin: 10px 0 2px 0;
 }
 
 #top {
@@ -95,7 +96,6 @@ li {
 }
 
 #nav {
-    height: 35.55px;
     /* border: 1px solid black; */
     position: relative;
     /* float: right; */
@@ -106,17 +106,20 @@ li {
 
 
 .nav-bar {
-    background-color: rgb(41,86,81, 0.96);
-    height: 100%;        
+    background-color: rgb(41,86,81, 0.96);       
     text-align: right;
+    height: 35.55px;
+    line-height: 35.55px;
 }
 
 .nav-bar a{
     display: inline-block;
-    height: 100%;
+    height: 35.55px;
     text-align: center;
     padding: 3px 10px;
     font-weight: bold;
+    font-size: 0.8em;
+    vertical-align: middle;
 }
 
 /* Change the color of links on hover */
