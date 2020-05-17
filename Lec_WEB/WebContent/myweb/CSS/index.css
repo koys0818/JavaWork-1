@@ -29,6 +29,12 @@
     user-select: none;
 }
 
+p#author {
+    color: #295651;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
 
 
 

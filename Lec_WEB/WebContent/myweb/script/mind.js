@@ -1,3 +1,5 @@
+var canvas;
+
 $(document).ready(function () {
     canvas = new fabric.Canvas('mainCanvas', {
         selection: false
@@ -6,9 +8,52 @@ $(document).ready(function () {
 
     fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
 
+    if(window.innerWidth < 1024){        
+        canvas.setWidth(window.innerWidth);
+        canvas.setHeight(442.47)
+    } else{
+        canvas.setWidth(720);
+        canvas.setHeight(480)
+    }
+
+
+
+
+    $(window).resize(function() {
+        if(window.innerWidth >= 1024){
+            canvas.setHeight(480);
+            canvas.setWidth(720);
+
+        } else{
+            canvas.setHeight(442.47);
+            canvas.setWidth(window.innerWidth);
+        }
+    });
+
     //moving circles and line together
-    canvas.on('object:moving', function (e) {
+    canvas.on('object:moving', function (e) {  
+
         const p = e.target;
+
+        if(p.left < 0){    
+            p.left = 0;
+            
+        }
+
+        if(p.top < 0){
+            p.top = 0;
+            
+        }
+
+        if(p.left > canvas.width){
+            p.left = canvas.width;
+
+        }
+
+        if(p.top > canvas.height){
+            p.top = canvas.height;
+        }
+
 
         if (p.line1.length > 0) {
             for (var i = 0; i < p.line1.length; i++) {
@@ -60,7 +105,9 @@ $(document).ready(function () {
         } else if (how == "remove") {
             removeObject(canvas, idea);
     
-        } else if (how == "link" && to != "") {
+        } else if (how == "link") {
+            if(to == "") return;
+
             const shapes = [findShape(canvas, to, fabric.Groups), findShape(canvas, idea, fabric.Groups)];
             if (shapes[0] == null) {
                 shapes[0] = drawCircle(canvas, to, 50);
@@ -71,8 +118,11 @@ $(document).ready(function () {
     
             linkCircles(canvas, shapes[0], shapes[1]);
     
-    
         }
+
+        $("#idea").val("");
+        $("#to").val("");
+
     });
 
 });
@@ -89,8 +139,8 @@ function onlyAlphabet(ele){
 //make a circle with text
 function makeCircle(text, radius) {
 
-    const x = Math.random() * (canvas.width - 100) + 50;
-    const y = Math.random() * (canvas.height - 100) + 50;
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
 
     const c = new fabric.Circle({
         strokeWidth: 1,
@@ -102,7 +152,7 @@ function makeCircle(text, radius) {
     });
 
     const t = new fabric.Text(text, {
-        fontSize: 16,
+        fontSize: 20,
         fill: '#295651'
     });
 

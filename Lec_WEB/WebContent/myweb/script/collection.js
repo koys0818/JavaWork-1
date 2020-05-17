@@ -21,9 +21,6 @@ $(document).ready(function () {
 
     });
 
-    // $("a.next").click(function(){
-    //     parseJSON(jsonData);
-    // });
 });
 
 var photo_index = 0;

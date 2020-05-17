@@ -27,9 +27,7 @@ input {
 
 
 form button{
-    /* float: right; */
     width: 20%;
-    /* margin-right: 10px; */
     font-size: 11px;
     padding: 0 10px;
 }
@@ -40,49 +38,56 @@ form button{
 }
 
 select{
-    width: 25%;
+    width: 40%;
 }
 
 
 
 
 /* pc환경 */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px) {    
 
     #side_content{
         height: 480px;
-    }
-    
-    #main_content{
-        padding-top: initial;
-        height: 480px;
-    }
-
-    #main_content h4{
-        position: absolute;
-        left: 15px;
-        top: 220px;
-        font-size: 4.5em;
-        font-weight: 500;
-    }
-
-    #main_content h5{
-        position: absolute;
-        font-size: 2.3em;
-        font-weight: 500;
-        top:320px;
-        left: 15px;
+        width: 66.66%;
+        float: right; 
+        padding-right: 720px;
+        text-align: left;
         
     }
 
-    #intro {
-        padding: initial;
+    #main_content{
+        padding-top: initial;
+        height: 480px;
+        width: 33.33%;
+        float: left;
+    }
+    
+    
+
+    form{
         position: absolute;
         bottom: 37.5px;
         right: 15px;
-        font-size: 1.5em;
-        padding-left: 120px;
-
     }
+
+    label{
+        font-size: 1.5em;
+    }
+
+    input{
+        font-size: 1.5em;
+    }
+
+    form button{
+        font-size: 1.5em;
+        width: 30%;
+    }
+
+    select{
+        font-size: 1.5em;
+        width: 40%;
+    }
+
 
 }

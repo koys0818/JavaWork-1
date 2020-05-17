@@ -38,32 +38,23 @@ li {
 }
 
 #wrapper {
-    /* position: relative; */
     height: 640px;
-    /* overflow: hidden; */
     margin: 1% auto;
 }
 
 #top {
     height: 568.89px;
-    /* max-height: 426.66px; */
-    /* border: 1px solid black; */
     overflow: hidden;
 
 }
 
 #bottom {
     height: 71.11px;
-    /* position: absolute; */
-    /* bottom: 5px; */
-    /* right: 5px; */
-    /* overflow: hidden; */
 }
 
 
 #side_content {
     height: 126.42px;
-    /* border: 1px solid black; */
     overflow: hidden;
     position: relative;
     text-align: center;
@@ -82,7 +73,6 @@ li {
 }
 
 #logo-area {
-    /* border: 1px solid black; */
     height: 35.55px;
     position: relative;
     text-align: right;
@@ -100,13 +90,8 @@ li {
 }
 
 #nav {
-    /* border: 1px solid black; */
     position: relative;
     background-color: rgb(41,86,81, 0.96);
-    /* float: right; */
-    /* position: absolute;
-    bottom: 5px;
-    right: 5px; */
 }
 
 
@@ -210,7 +195,6 @@ li {
         height: 50px;
         font-size: 1.2em;
         padding: 10px 15px;
-        /* padding:  */
     }
 
 
