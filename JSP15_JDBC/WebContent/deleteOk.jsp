@@ -65,6 +65,7 @@
 <% } else { %>
 	<script>
 		alert('삭제 성공');
-		location.href = 'list.jsp?page= + <%= curPage %>';
+		//location.href = list.jsp?page=8;
+		//location.href = "list.jsp?page=" + <%= curPage%>;
 	</script>
 <% } %>

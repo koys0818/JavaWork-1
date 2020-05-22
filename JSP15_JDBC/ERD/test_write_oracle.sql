@@ -43,3 +43,7 @@ SELECT * FROM TEST_WRITE ORDER BY wr_uid DESC;
 INSERT INTO TEST_WRITE (WR_UID , WR_SUBJECT , WR_CONTENT , WR_NAME)
 	SELECT test_write_seq.nextval, wr_subject, wr_content, wr_name FROM test_WRITE;
 
+DELETE FROM TEST_WRITE WHERE wr_uid > 10;
+
+
+
