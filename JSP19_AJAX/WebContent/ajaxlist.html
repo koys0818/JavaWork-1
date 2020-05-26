@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>jQuery + AJAX</title>
+<style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+</style>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<body>
+<h1>목록 보기 : AJAX</h1>
+<form>
+<button id="btn_load" type="button">목록 가져오기</button>
+<button id="btn_remove" type="button">목록 지우기</button>
+</form>
+<br><br>
+<h2>AJAX + XML</h2>
+<table id="demoXML"></table>
+<hr>
+<h2>AJAX + JSON</h2>
+<table id="demoJSON"></table>
+<script>
+
+$(document).ready(function(){
+	 $("#btn_load").click(function(){
+		 getList();
+	 });
+	 
+	$("#btn_remove").click(function(){
+		$("#demoXML").empty();
+		$("#demoJSON").empty();
+	});
+});
+
+function getList(){
+	 var url = ""
+		 
+	// XML
+	url = "list.ajax?reqType=xml";
+	$.ajax({
+		url :  url,
+		type : "GET",
+		cache : false,
+		success : function(data, status){
+			if(status == "success") 
+				parseXML(data);
+		}
+	 });
+	 
+	// JSON
+	url = "list.ajax?reqType=json";
+	$.ajax({
+		url :  url,
+		type : "GET",
+		cache : false,
+		success : function(data, status){
+			if(status == "success") 
+				parseJSON(data);
+		}
+	 });
+		
+} // end getList();
+ 
+function parseXML(xmlDOM) {
+	var tableXML = $("#demoXML");
+	var str = "<tr><th>id</th><th>작성자</th><th>글제목</th><th>글내용</th><th>조회수</th><th>작성일</th><tr>";
+	
+	//select된 element 각각에 적용하는 함수
+	$(xmlDOM).find("Data").each(function(){
+		str += "<tr>";
+		str += '<td>' + $(this).find("uid").text() + "</td>";
+		str += '<td>' + $(this).find("name").text() + "</td>";
+		str += '<td>' + $(this).find("subject").text() + "</td>";
+		str += '<td>' + $(this).find("content").text() + "</td>";
+		str += '<td>' + $(this).find("viewcnt").text() + "</td>";
+		str += '<td>' + $(this).find("regdate").text() + "</td>";
+		str += "</tr>";
+	});
+	
+	tableXML.html(str);
+}
+
+function parseJSON(jsonObj){
+	var tableJSON = $("#demoJSON");
+	var count = jsonObj.data.length;
+
+    var str = "<tr><th>id</th><th>작성자</th><th>글제목</th><th>글내용</th><th>조회수</th><th>작성일</th><tr>";
+    
+    for(var i=0; i < count; i++){
+    	str += "<tr>";
+    	str += "<td>" + jsonObj.data[i].uid + "</td>";
+    	str += "<td>" + jsonObj.data[i].name + "</td>";
+    	str += "<td>" + jsonObj.data[i].subject + "</td>";
+    	str += "<td>" + jsonObj.data[i].content + "</td>";
+    	str += "<td>" + jsonObj.data[i].viewcnt + "</td>";
+    	str += "<td>" + jsonObj.data[i].regdate + "</td>";
+    	str += "</tr>";
+    }
+    
+    tableJSON.html(str);
+}
+ 
+</script>
+
+</body>
+</html>
