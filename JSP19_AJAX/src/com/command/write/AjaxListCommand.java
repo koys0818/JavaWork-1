@@ -1,6 +1,7 @@
 package com.command.write;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,11 @@ import org.jdom2.output.XMLOutputter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.lec.beans.AjaxWriteListJson;
+import com.lec.beans.AjaxWriteListXML;
 import com.lec.beans.WriteDTO;
 
 public class AjaxListCommand implements Command {
@@ -25,15 +31,76 @@ public class AjaxListCommand implements Command {
 		// "XML" 혹은 "json"으로 response 하기
 		switch(reqType){
 		case "xml":
-			responseXML(request, response);
-			break;
-		case "json":
-			responseJSON(request, response);
+//			responseXML(request, response); //jdom사용
+			responseXML2(request, response); //Jackson사용
 			break;
 		default:
-			responseJSON(request, response);
+//			responseJSON(request, response);//org.json사용
+			responseJSON2(request, response);//Jackson사용
 		} //end switch
 	} // end execute()
+	
+	private void responseJSON2(HttpServletRequest request, HttpServletResponse response) {
+		WriteDTO [] dtoARR = (WriteDTO[]) request.getAttribute("list");
+		
+		AjaxWriteListJson list = new AjaxWriteListJson(); //response할 java 객체
+		
+		if(dtoARR == null) {
+			list.setStatus("FAIL");
+		} else {
+			list.setStatus("OK");
+			list.setCount(dtoARR.length);
+			list.setList(Arrays.asList(dtoARR));
+		}
+		
+		
+		
+		
+		ObjectMapper mapper = new ObjectMapper(); //JSON으로 매핑할 Mapper 객체
+		
+		try {
+			//Java객체 ==> JSON 문자열로 변환
+			String jsonString = mapper.writeValueAsString(list);
+			
+			response.setContentType("application/json; charset=utf-8");
+			response.getWriter().write(jsonString);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void responseXML2(HttpServletRequest request, HttpServletResponse response) {
+		WriteDTO [] dtoARR = (WriteDTO[]) request.getAttribute("list");
+		
+		AjaxWriteListXML list = new AjaxWriteListXML(); //response할 Java 객체
+		
+		XmlMapper mapper = new XmlMapper(); //XML 매핑할 Mapper 객체
+		
+		if(dtoARR == null) {
+			list.setStatus("FAIL");
+		} else {
+			list.setStatus("OK");
+			list.setCount(dtoARR.length);
+			list.setList(Arrays.asList(dtoARR));
+		}
+		
+		try {
+			String xmlString = mapper.writeValueAsString(list);
+			
+			response.setContentType("application/xml; charset=utf-8");
+			response.getWriter().write(xmlString);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	private void responseJSON(HttpServletRequest request, HttpServletResponse response) {
 		WriteDTO [] dtoArr = (WriteDTO [])request.getAttribute("list");
