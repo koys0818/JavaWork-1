@@ -31,7 +31,7 @@ public class WriteDAO {
 		try {
 			Class.forName(D.DRIVER);
 			conn = DriverManager.getConnection(D.URL, D.USERID, D.USERPW);
-//			System.out.println("WriteDAO 생성, 데이터 베이스 연결!");
+			System.out.println("WriteDAO 생성, 데이터 베이스 연결!");
 		} catch(Exception e) {
 			e.printStackTrace();
 			// throw e;
@@ -75,50 +75,51 @@ public class WriteDAO {
 		return cnt;
 	}
 	
-	// 새글 작성 <-- 제목, 내용, 작성자
-	//		<--(첨부파일(들)
-		public int insert(String subject, String content, String name,
-				List<String> originalFileNames, //원본 파일명(들)
-				List<String> fileSystemNames	//저장된 파일명(들)
-				) throws SQLException {
-			int cnt = 0;
-			int uid = 0; //INSERT 된 글의 wr_uid 값
+	// 새글작성 <-- 제목, 내용, 작성자
+	//      <-- 첨부파일(들)
+	public int insert(String subject, String content, String name,
+			// 이미 파일은 저장되어 있다 (cos 라이브러리)
+			List<String> originalFileNames,    // 원본 파일명(들)
+			List<String> fileSystemNames      // 저장된 파일명(들)
+			) throws SQLException {
+		int cnt = 0;
+		int uid = 0;  // INSERT 된 글의 wr_uid 값
+		
+		try {	
+			// 자동생성된 컬럼의 이름(들)이 담긴 배열 준비 (auto-generated keys)
+			String [] generatedCols = {"wr_uid"};
 			
-			try {			
-				//자동생성된 컬럼의 이름(들)이 담긴 배열 준비(auto-generated keys)
-				String[] generatedCols = {"wr_uid"};
-				
-				// Statement나 PreparedStatement 생성 시 두 번쨰 매개변수로  auto-generated keys배열 넘겨줌
-				pstmt = conn.prepareStatement(D.SQL_WRITE_INSERT, generatedCols);
-				pstmt.setString(1, subject);
-				pstmt.setString(2, content);
-				pstmt.setString(3, name);
-				
-				cnt = pstmt.executeUpdate();
-				
-				//auto-generated keys값 뽑아오기
-				rs = pstmt.getGeneratedKeys();
-				if(rs.next()) {
-					uid = rs.getInt(1); //첫번째 칼럼
-					
-				}			
-				pstmt.close();
-				
-				//첨부파일(들) 정보 테이블에 INSERT 하기
-				pstmt = conn.prepareStatement(D.SQL_FILE_INSERT);
-				for(int i=0; i < originalFileNames.size(); i ++) {
-					pstmt.setString(1,  originalFileNames.get(i));
-					pstmt.setString(2,  fileSystemNames.get(i));
-					pstmt.setInt(3,  uid);
-					pstmt.executeUpdate();
-				} //end for
-				
-			} finally {
-				close();			
+			// Statement 나 PreparedStatement 생성시 두번째 매개변수로 auto-genereated keys 배열 넘겨줌 
+			pstmt = conn.prepareStatement(D.SQL_WRITE_INSERT, generatedCols);
+			pstmt.setString(1, subject);
+			pstmt.setString(2, content);
+			pstmt.setString(3, name);
+			
+			cnt = pstmt.executeUpdate();
+			
+			// auto-generated keys 값 뽑아오기
+			rs = pstmt.getGeneratedKeys();
+			if(rs.next()) {
+				uid = rs.getInt(1);  // 첫번째 컬럼
 			}
-
-			return cnt;
+			
+			pstmt.close();
+			// 첨부파일(들) 정보 테이블에 INSERT 하기
+			pstmt = conn.prepareStatement(D.SQL_FILE_INSERT);
+			for(int i = 0; i < originalFileNames.size(); i++) {
+				pstmt.setString(1, originalFileNames.get(i));
+				pstmt.setString(2, fileSystemNames.get(i));
+				pstmt.setInt(3, uid);
+				pstmt.executeUpdate();
+			} // end for
+			
+			
+		} finally {
+			close();			
 		}
+		
+		return cnt;
+	}
 	
 	// ResultSet --> DTO 배열로 리턴
 	public WriteDTO [] createArray(ResultSet rs) throws SQLException {

@@ -21,10 +21,9 @@ public class ViewCommand implements Command {
 		WriteDAO dao = new WriteDAO();
 		WriteDTO [] arr = null;
 		
-		//첨부파일
+		// 첨부파일
 		FileDAO fileDao = new FileDAO();
 		FileDTO [] fileArr = null;
-		
 		
 		int uid = Integer.parseInt(request.getParameter("uid"));  // 매개변수 검증 필요
 
@@ -35,13 +34,13 @@ public class ViewCommand implements Command {
 			e.printStackTrace();
 		}
 		
-		//첨부파일 읽어 들이기
+		// 첨부파일 읽어 들이기
 		
 		try {
 			if(arr != null && arr.length == 1) {
-				fileArr = fileDao.selectFilesByWrUid(uid); //첨부파일 읽어오기
+				fileArr = fileDao.selectFilesByWrUid(uid);  // 첨부파일 읽어오기
 				
-				//이미지 파일 여부 세팅
+				// 이미지 파일 여부 세팅
 				String realPath = "";
 				String saveFolder = "upload";
 				ServletContext context = request.getServletContext();
@@ -50,21 +49,41 @@ public class ViewCommand implements Command {
 				for(FileDTO fileDto : fileArr) {
 					String downloadedFilePath = realPath + File.separator + fileDto.getFile();
 					BufferedImage imgData = ImageIO.read(new File(downloadedFilePath));
-					if(imgData != null) {
-						fileDto.setImage(true); //이미지 다!
+					if(imgData != null) {   
+						fileDto.setImage(true);  // 이미지 다!
 					}
 				}
 				
 				request.setAttribute("file", fileArr);
-			}
+			}			
 			
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 
-	}
+	} // end execute()
 
-}
+}  // end Command
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

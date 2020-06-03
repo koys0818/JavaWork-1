@@ -23,8 +23,8 @@ public class WriteCommand implements Command {
 		int cnt = 0;
 		WriteDAO dao = new WriteDAO();
 		
-		
-		//업로드 파일
+		//---------------------------------------------
+		// 업로드 파일
 		ServletContext context = request.getServletContext();
 		String saveDirectory = context.getRealPath("upload");
 		
@@ -35,20 +35,20 @@ public class WriteCommand implements Command {
 		
 		try {
 			multi = new MultipartRequest(
-					request, 
+					request,
 					saveDirectory,
 					maxPostSize,
 					encoding,
-					policy);
+					policy
+					);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-				
+		
 		List<String> originalFileNames = new ArrayList<String>();
 		List<String> fileSystemNames = new ArrayList<String>();
 		
-		Enumeration names = multi.getFileNames(); //type="file" 요소의 name들 추출
+		Enumeration names = multi.getFileNames();  // type="file" 요소의 name들 추출
 		while(names.hasMoreElements()) {
 			String name = (String)names.nextElement();
 			String originalFileName = multi.getOriginalFileName(name);
@@ -59,12 +59,12 @@ public class WriteCommand implements Command {
 				originalFileNames.add(originalFileName);
 				fileSystemNames.add(fileSystemName);
 			}
-		}
-		
+			
+		} // end while
 		
 		
 		// 매개변수 받아오기
-		String name = multi.getParameter("name"); //*MultipartRequest 객체 사용!
+		String name = multi.getParameter("name");  // ★MultipartRequest 객체 사용!
 		String subject = multi.getParameter("subject");
 		String content = multi.getParameter("content");
 		
@@ -72,6 +72,7 @@ public class WriteCommand implements Command {
 				name.trim().length() > 0 && subject.trim().length() > 0) {
 			
 			try {
+				// ★ 첨부파일 정보 같이 INSERT
 				cnt = dao.insert(subject, content, name, originalFileNames, fileSystemNames);
 			} catch(SQLException e) {
 				e.printStackTrace();

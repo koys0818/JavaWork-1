@@ -30,7 +30,7 @@ public class WriteDTO {
 		this.content = content;
 		this.name = name;
 		this.viewCnt = viewCnt;
-		System.out.println("WriteDTO(uid, subject, content, name, viewCnt) 객체 생성");
+//		System.out.println("WriteDTO(uid, subject, content, name, viewCnt) 객체 생성");
 	}
 	
 	// getter / setter

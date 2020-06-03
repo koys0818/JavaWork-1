@@ -41,22 +41,21 @@ function chkSubmit(){  // 폼 검증
 <textarea name="content"></textarea>
 <br><br>
 
-<!-- 첨부파일 -->
-<div style="background-color: #DDDDDD; padding: 2px 10px; margin-bottom: 5px; border : 1px solid black;">
-	<button type="button" id="btnAdd">추가</button>
+<%-- 첨부파일 --%>
+<div style="background-color: beige; padding: 2px 10px; margin-bottom: 5px; border: 1px solid black;">
 	<h4>첨부파일</h4>
+	<button type="button" id="btnAdd">추가</button>
 	<div id='files'></div>
-	
-	
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 var i = 0;
 $("#btnAdd").click(function(){
-	$("#files").append("<div><input type='file' name='upfile" + i + "' /><button type='button' onclick='$(this).parent().remove()'>삭제</button></div>");
+	$("#files").append("<div><input type='file' name='upfile" + i + "'/><button type='button' onclick='$(this).parent().remove()'>삭제</button></div>");
 	i++;
 });
 </script>
+
 <input type="submit" value="등록"/>
 </form>
 <br>

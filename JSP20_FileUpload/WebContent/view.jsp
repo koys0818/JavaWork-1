@@ -44,12 +44,13 @@ ${list[0].content }
 </div>
 <hr>
 
-<!-- 첨부파일 및 다운로드 링크 -->
+<%-- 첨부파일 및 다운로드 링크 --%>
 <c:if test="${fn:length(file) > 0 }">
+<div style="background-color: beige; padding: 2px 10px; margin-bottom: 5px; border: 1px solid black;">
 	<h4>첨부파일</h4>
 	<ul>
 		<c:forEach var="element" items="${file }">
-			<li><a href="download.do?uid=${element.uid }">${element.source}</a> </li>
+			<li><a href="download.do?uid=${element.uid }">${element.source }</a></li>
 		</c:forEach>
 		
 		<%-- 이미지인 경우 보여주기 --%>
@@ -58,13 +59,12 @@ ${list[0].content }
 				<div style="width:300px">
 					<img style="width:100%; height:auto"
 						src="upload/${element.file }"
-						/>
+					/>
 				</div>
-			
 			</c:if>
 		</c:forEach>
-		
 	</ul>
+</div>
 </c:if>
 
 

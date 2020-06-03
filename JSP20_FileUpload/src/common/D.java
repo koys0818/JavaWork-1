@@ -31,40 +31,38 @@ public class D {
 			"DELETE FROM test_write WHERE wr_uid = ?";
 	
 	// 첨부파일용 쿼리
-	// 특정 글(wr_uid)의 첨부파일 1개 Insert
-	public static final String SQL_FILE_INSERT =
+	// 특정 글(wr_uid) 의 첨부파일 1개 INSERT
+	public static final String SQL_FILE_INSERT = 
 			"INSERT INTO test_file"
 			+ "(bf_uid, bf_source, bf_file, wr_uid) "
 			+ "VALUES"
 			+ "(test_file_seq.nextval, ?, ?, ?)"
 			;
 	
-	
-	
-	// 특정 글(wr_uid)의 첨부파일 (들)을 SELECT
+	// 특정 글(wr_uid) 의 첨부파일(들)을 SELECT
 	public static final String SQL_FILE_SELECT =
-			"SELECT bf_uid, bf_source, bf_file, wr_uid FROM test_file "
+			"SELECT bf_uid, bf_source, bf_file FROM test_file "
 			+ "WHERE wr_uid = ? "
 			+ "ORDER BY bf_uid DESC"
 			;
 	
-	
 	// 특정 첨부파일 (bf_uid) 하나를 SELECT
 	public static final String SQL_FILE_SELECT_BY_UID =
 			"SELECT bf_uid, bf_source, bf_file FROM test_file "
-			+ "WHERE bf_uid = ? "
+			+ "WHERE bf_uid = ?"
 			;
 	
-	
-	// 특정 첨부파일(bf_uid) 하나를 DELETE
+	// 특정 첨부파일 (bf_uid) 하나를 DELETE
 	public static final String SQL_FILE_DELETE_BY_UID =
 			"DELETE FROM test_file WHERE bf_uid = ?"
 			;
 	
-	// 특정글(wr_uid)의 첨부파일(들)을 DELETE
-	public static final String SQL_FILE_DELETE_BY_WRUID =
+	// 특정 글 (wr_uid) 의 첨부파일(들)을 DELETE
+	public static final String SQL_FILE_DELETE_BY_WRUID = 
 			"DELETE FROM test_file WHERE wr_uid = ?"
 			;
+	
+
 }
 
 

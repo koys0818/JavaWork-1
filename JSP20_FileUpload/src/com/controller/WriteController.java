@@ -86,12 +86,13 @@ public class WriteController extends HttpServlet {
 			command = new DeleteCommand();
 			command.execute(request, response);
 			viewPage = "deleteOk.jsp";
-			break;	
+			break;
 			
-		//파일 다운로드!
+		// 파일 다운로드!
 		case "/download.do":
 			command = new DownloadCommand();
 			command.execute(request, response);
+			// 굳이 view 필요하지 않다.
 			break;
 		} // end switch
 		

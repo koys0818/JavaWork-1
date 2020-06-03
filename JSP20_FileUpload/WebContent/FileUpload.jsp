@@ -30,8 +30,11 @@
 <%
 	// MultipartRequest 객체 생성 준비
 	//String saveDirectory = "C:\\tomcat\\upload";
+
+	// 파일 저장경로
+	// 서버에서(서블릿) 어디에 어느폴더에서 서블릿으로 변환되는지 알아내기
 	ServletContext context = this.getServletContext();
-	//서블릿상의 upload 폴더의 물리적인 경로 얻어오기
+	// 서블릿앙의 upload 폴더의 물리적인 경로 얻어오기
 	String saveDirectory = context.getRealPath("upload");
 
 
@@ -117,5 +120,24 @@
 </form>
 
 
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
