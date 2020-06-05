@@ -20,6 +20,10 @@ public class WriteCommand implements Command {
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
 		
+		//Ajax 리턴에 필요한 값들
+		StringBuffer message = new StringBuffer();
+		String status = "FAIL"; //기본 FAIL
+		
 		if(name != null && subject != null &&
 				name.trim().length() > 0 && subject.trim().length() > 0) {
 			
@@ -28,6 +32,9 @@ public class WriteCommand implements Command {
 			} catch(SQLException e) {
 				e.printStackTrace();
 			}
+			
+			request.setAttribute("status", status);
+			request.setAttribute("message", message.toString());
 			
 		} // end if
 			

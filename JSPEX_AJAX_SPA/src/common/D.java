@@ -26,5 +26,17 @@ public class D {
 				"UPDATE test_write SET wr_viewcnt = wr_viewcnt + 1 WHERE wr_uid = ?";
 		public static final String SQL_WRITE_SELECT_BY_UID = //글 읽어오기
 					"SELECT * FROM test_write WHERE wr_uid = ?";
+		
+		//페이징
+		//글 목록 전체 개수 가져오기
+		public static final String SQL_WRITE_COUNT_ALL = 
+				"SELECT count(*) from test_write";
+		
+		// fromRow 부터 pageRows 만큼 select
+		// 몇번째 부터 몇개 만큼
+		public static final String SQL_WRITE_SELECT_FROM_ROW = 
+				"SELECT * FROM " +
+				"(SELECT Rownum AS rnum, t.* FROM (SELECT * from test_write ORDER BY wr_UID DESC) T)" +
+				"WHERE RNUM  >= ? AND  RNUM < ?";
 
 }

@@ -154,28 +154,24 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
       
-	<Context docBase="JSP02_ServeltBasic" path="/JSP02_ServeltBasic" reloadable="true" source="org.eclipse.jst.jee.server:JSP02_ServeltBasic"/>
-	<Context docBase="JSP03_ServletGetPost" path="/JSP03_ServletGetPost" reloadable="true" source="org.eclipse.jst.jee.server:JSP03_ServletGetPost"/>
-	<Context docBase="JSP04_servletLifeCycle" path="/JSP04_servletLifeCycle" reloadable="true" source="org.eclipse.jst.jee.server:JSP04_servletLifeCycle"/>
-	<Context docBase="JSP05_ServletForm" path="/JSP05_ServletForm" reloadable="true" source="org.eclipse.jst.jee.server:JSP05_ServletForm"/>
-	<Context docBase="JSP06_ServletinitParam" path="/JSP06_ServletinitParam" reloadable="true" source="org.eclipse.jst.jee.server:JSP06_ServletinitParam"/>
-	<Context docBase="JSP07_ServletContext" path="/JSP07_ServletContext" reloadable="true" source="org.eclipse.jst.jee.server:JSP07_ServletContext"/>
-	<Context docBase="JSP09_ImplicitObject" path="/JSP09_ImplicitObject" reloadable="true" source="org.eclipse.jst.jee.server:JSP09_ImplicitObject"/>
-	<Context docBase="JSP10_ActionTag" path="/JSP10_ActionTag" reloadable="true" source="org.eclipse.jst.jee.server:JSP10_ActionTag"/>
-	<Context docBase="JSP11_Cookie" path="/JSP11_Cookie" reloadable="true" source="org.eclipse.jst.jee.server:JSP11_Cookie"/>
-	<Context docBase="JSP12_Session" path="/JSP12_Session" reloadable="true" source="org.eclipse.jst.jee.server:JSP12_Session"/>
-	<Context docBase="JSP13_Exception" path="/JSP13_Exception" reloadable="true" source="org.eclipse.jst.jee.server:JSP13_Exception"/>
-	<Context docBase="JSP14_JavaBean" path="/JSP14_JavaBean" reloadable="true" source="org.eclipse.jst.jee.server:JSP14_JavaBean"/>
-	<Context docBase="JSP15_JDBC" path="/JSP15_JDBC" reloadable="true" source="org.eclipse.jst.jee.server:JSP15_JDBC"/>
-	<Context docBase="JSP15_JDBC_Practice" path="/JSP15_JDBC_Practice" reloadable="true" source="org.eclipse.jst.jee.server:JSP15_JDBC_Practice"/>
-	<Context docBase="JSP16_DAODTO" path="/JSP16_DAODTO" reloadable="true" source="org.eclipse.jst.jee.server:JSP16_DAODTO"/>
-	<Context docBase="JSP17_ConnectionPool" path="/JSP17_ConnectionPool" reloadable="true" source="org.eclipse.jst.jee.server:JSP17_ConnectionPool" useNaming="true">
-		
-		<Resource auth="Container" description="DB Connection" driverClassName="oracle.jdbc.driver.OracleDriver" maxIdle="5" maxTotal="50" maxWaitMillis="5000" name="jdbc/testDB" password="tiger0316" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:XE" username="scott0316"/>
 	
-	</Context>		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+			
 		
-	<Context docBase="JSP18_MVC" path="/JSP18_MVC" reloadable="true" source="org.eclipse.jst.jee.server:JSP18_MVC"/><Context docBase="JSP21_EL" path="/JSP21_EL" reloadable="true" source="org.eclipse.jst.jee.server:JSP21_EL"/><Context docBase="JSP22_JSTL" path="/JSP22_JSTL" reloadable="true" source="org.eclipse.jst.jee.server:JSP22_JSTL"/><Context docBase="JSP19_AJAX" path="/JSP19_AJAX" reloadable="true" source="org.eclipse.jst.jee.server:JSP19_AJAX"/><Context docBase="JSPEX_WebEditor" path="/JSPEX_WebEditor" reloadable="true" source="org.eclipse.jst.jee.server:JSPEX_WebEditor"/><Context docBase="JSP20_FileUpload" path="/JSP20_FileUpload" reloadable="true" source="org.eclipse.jst.jee.server:JSP20_FileUpload"/></Host>
+	<Context docBase="JSPEX_AJAX_SPA" path="/JSPEX_AJAX_SPA" reloadable="true" source="org.eclipse.jst.jee.server:JSPEX_AJAX_SPA"/></Host>
     </Engine>
   </Service>
 </Server><!-- 
