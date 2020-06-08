@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,9 +13,11 @@ import com.command.write.*;
 @WebServlet("*.ajax")
 public class AjaxController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
     public AjaxController() {
         super();
     }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ajaxAction(request, response);
 	}
@@ -25,7 +28,7 @@ public class AjaxController extends HttpServlet {
 	
 	protected void ajaxAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("ajaxAction() 호출");
-//		request.getMethod(); get인지 post인지 확인
+
 		request.setCharacterEncoding("UTF-8");
 		
 		// 컨트롤러는 다음 두개를 선택해야 한다.
@@ -42,39 +45,36 @@ public class AjaxController extends HttpServlet {
 		System.out.println("com: " + com);
 		
 		switch(com) {
-		case "/list.ajax": // 글목록(페이징)
+		case "/list.ajax":   // A 글목록(페이징)
 			new ListCommand().execute(request, response);
 			new AjaxListCommand().execute(request, response);
-			
-			
 			break;
-			
-		case "/view.ajax": //글읽기
+		
+		case "/view.ajax":  // B 글 읽기
 			new ViewCommand().execute(request, response);
 			new AjaxListCommand().execute(request, response);
-			
-			
 			break;
 			
-		case "/writeOk.ajax": // C글 작성
+		case "/writeOk.ajax": // C 글작성
 			new WriteCommand().execute(request, response);
-			new AjaxListCommand().execute(request, response);
-			
+			new AjaxResultCommand().execute(request, response);
 			break;
-			
+		
 		case "/updateOk.ajax": // D 글 수정
 			new UpdateCommand().execute(request, response);
-			new AjaxListCommand().execute(request, response);
-			
+			new AjaxResultCommand().execute(request, response);
 			break;
-			
-		case "/deleteOk.ajax": // F 글 삭제
-			new DeleteCommand().execute(request, response);
-			new AjaxListCommand().execute(request, response);
-			
-			break;
-			
-		} //end switch
 		
-	}
-}
+		case "/deleteOk.ajax":  // F 글 삭제
+			new DeleteCommand().execute(request, response);
+			new AjaxResultCommand().execute(request, response);
+			break;
+		} // end switch
+		
+		
+		
+		
+	}  // ajaxAction
+
+} // end Controller
+
