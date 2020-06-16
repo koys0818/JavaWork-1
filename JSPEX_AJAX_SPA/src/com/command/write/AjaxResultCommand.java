@@ -39,3 +39,15 @@ public class AjaxResultCommand implements Command {
 	} // end execute()
 
 } // end Command
+
+
+
+
+
+
+
+
+
+
+
+

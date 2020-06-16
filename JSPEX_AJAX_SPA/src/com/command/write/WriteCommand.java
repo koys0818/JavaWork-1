@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.lec.beans.WriteDAO;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.REUtil;
 
 public class WriteCommand implements Command {
 
@@ -52,6 +53,18 @@ public class WriteCommand implements Command {
 	} // end execute()
 
 } // end Command
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

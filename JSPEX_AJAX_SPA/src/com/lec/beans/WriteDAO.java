@@ -125,26 +125,26 @@ public class WriteDAO {
 		return arr;
 	} // end select()
 	
-	//페이징 관련
-	//몇번째 from 부터  몇개 rows를 select
-	public WriteDTO[] selectFromRow(int from, int rows) throws SQLException{
-		WriteDTO[] arr = null;
+	// 페이징 관련
+	// 몇번째 from 부터 몇개 rows 를 SELECT
+	public WriteDTO [] selectFromRow(int from, int rows) throws SQLException {
+		WriteDTO [] arr = null;
 		
 		try {
 			pstmt = conn.prepareStatement(D.SQL_WRITE_SELECT_FROM_ROW);
-			pstmt.setInt(1, from);
-			pstmt.setInt(2, from + rows);
+			pstmt.setInt(1,  from);
+			pstmt.setInt(2,  from + rows);
 			rs = pstmt.executeQuery();
-			arr = createArray(rs);
+			arr = createArray(rs);			
 		} finally {
 			close();
-		} //end try
+		} // end try
 		
 		return arr;
-	} //end selectFromRow()
+	} // end selectFromRow()
 	
-	//전체 글의 개수
-	public int countAll() throws SQLException{
+	// 전체 글의 개수
+	public int countAll() throws SQLException {
 		int cnt = 0;
 		
 		try {
@@ -154,22 +154,26 @@ public class WriteDAO {
 			cnt = rs.getInt(1);
 		} finally {
 			close();
-		}
+		} // end try
 		
 		return cnt;
-	} //countAll()
+	} // countAll()
+	
+	
+	
 	
 	// 특정 uid 의 글 내용 읽기, 조회수 증가
-	// viewCnt 도 1 증가 해야 하고, 읽어와야 한다 --> 트랜잭션 처리	
-	public WriteDTO [] readyByUid(int uid) throws SQLException{
+	// viewCnt 도 1 증가 해야 하고, 글 읽어와야 한다 --> 트랜잭션 처리
+	public WriteDTO [] readByUid(int uid) throws SQLException{
 		int cnt = 0;
 		WriteDTO [] arr = null;
 		
 		try {
-			//Auto-commit 비활성화
+			// 트랜잭션 처리
+			// Auto-commit 비활성화
 			conn.setAutoCommit(false);
 			
-			//쿼리들 수행
+			// 쿼리들 수행
 			pstmt = conn.prepareStatement(D.SQL_WRITE_INC_VIEWCNT);
 			pstmt.setInt(1, uid);
 			cnt = pstmt.executeUpdate();
@@ -191,11 +195,11 @@ public class WriteDAO {
 		}
 		
 		return arr;
-		
-	} //end readyByUid()
+	} // end readByUid()
 	
-	// 특정 uid의 글만 select(조회수 증가 없음)
-	public WriteDTO[] selectByUid(int uid) throws SQLException{
+	
+	// 특정 uid 의 글 만 SELECT (조회수 증가 없슴!)
+	public WriteDTO [] selectByUid(int uid) throws SQLException {
 		WriteDTO [] arr = null;
 		
 		try {
@@ -206,14 +210,13 @@ public class WriteDAO {
 		} finally {
 			close();
 		}
-		
 		return arr;
 	}
 	
-	// 특정 uid의 글 수정(제목, 내용)
-	public int update(int uid, String subject, String content) throws SQLException{
+	
+	// 특정 uid 의 글 수정 (제목, 내용)
+	public int update(int uid, String subject, String content) throws SQLException {
 		int cnt = 0;
-		
 		try {
 			pstmt = conn.prepareStatement(D.SQL_WRITE_UPDATE);
 			pstmt.setString(1, subject);
@@ -221,13 +224,12 @@ public class WriteDAO {
 			pstmt.setInt(3, uid);
 			
 			cnt = pstmt.executeUpdate();
-			
 		} finally {
 			close();
-		}
+		}		
 		
 		return cnt;
-	} //end update()
+	} // end update()
 	
 	// 특정 uid 글 삭제하기
 	public int deleteByUid(int uid) throws SQLException {
@@ -236,42 +238,47 @@ public class WriteDAO {
 			pstmt = conn.prepareStatement(D.SQL_WRITE_DELETE_BY_UID);
 			pstmt.setInt(1, uid);
 			cnt = pstmt.executeUpdate();
-			
 		} finally {
 			close();
 		}		
-		
 		return cnt;
 	} // end deleteByUid()
 	
-	//특정 uid 글(들) 삭제하기
-	public int deleteByUid(int [] uids) throws SQLException{
+	// 특정 uid 글(들) 삭제하기
+	public int deleteByUid(int [] uids) throws SQLException {
 		if(uids == null || uids.length == 0) return 0;
 		
 		int cnt = 0;
 		
 		try {
-			StringBuffer sql = new StringBuffer("DELETE FROM test_write WHERE wr_uid In (");
+			StringBuffer sql = new StringBuffer("DELETE FROM test_write WHERE wr_uid IN (");
 			for(int uid : uids) {
 				sql.append(uid + ",");
 			}
-			sql.deleteCharAt(sql.lastIndexOf(",")); //맨 끝의 콤마 삭제
+			sql.deleteCharAt(sql.lastIndexOf(","));  // 맨 끝의 콤마 삭제
 			sql.append(")");
 			
 			stmt = conn.createStatement();
 			cnt = stmt.executeUpdate(sql.toString());
-			
+					
 		} finally {
 			close();
-		} //end try
-		
-		
+		} // end try		
 		
 		return cnt;
-	} //end deleteByUid()
+	} // end deleteByUid()
 	
+	
+	
+	
+} // end DAO
 
-	
-	
-	
-}
+
+
+
+
+
+
+
+
+

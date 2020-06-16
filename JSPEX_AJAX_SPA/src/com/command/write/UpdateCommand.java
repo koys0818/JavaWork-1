@@ -23,13 +23,14 @@ public class UpdateCommand implements Command {
 		String param = request.getParameter("uid");
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
-		
+
+		// 유효성 체크
 		if(param == null) {
 			message.append("[유효하지 않은 parameter 0 or null]");
-		} else if(subject == null || subject.trim().length() == 0) {
-			message.append("[유효하지 않은 parameter : 글제목 필수");
+		} else if (subject == null || subject.trim().length() == 0) {
+			message.append("[유효하지 않은 parameter : 글제목 필수]");
 		} else {
-			try {
+			try {		
 				int uid = Integer.parseInt(param);
 				
 				cnt = dao.update(uid, subject, content);
@@ -37,15 +38,14 @@ public class UpdateCommand implements Command {
 				
 				if(cnt == 0) {
 					message.append("[0 update]");
-				}			
-				
+				}				
 				
 			} catch (SQLException e) {
-				message.append("[트랜잭션 에러: " + e.getMessage() + "]");
+				//e.printStackTrace();
+				message.append("[트랜잭션 에러:" + e.getMessage() + "]");
 			} catch (Exception e) {
-				message.append("[유효하지 않은 parameter]" + param);
-			} 
-
+				message.append("[유효하지 않은 parameter] " + param);
+			}
 
 		} // end if
 

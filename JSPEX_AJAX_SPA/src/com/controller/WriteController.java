@@ -9,13 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.command.write.Command;
-import com.command.write.DeleteCommand;
-import com.command.write.ListCommand;
-import com.command.write.SelectCommand;
-import com.command.write.UpdateCommand;
-import com.command.write.ViewCommand;
-import com.command.write.WriteCommand;
+import com.command.write.*;
 
 @WebServlet("*.do")
 public class WriteController extends HttpServlet {
@@ -68,32 +62,31 @@ public class WriteController extends HttpServlet {
 			command = new WriteCommand();
 			command.execute(request, response);
 			viewPage = "writeOk.jsp";
-			break;
-		
+			break;		
+			
 		case "/view.do":
 			command = new ViewCommand();
 			command.execute(request, response);
 			viewPage = "view.jsp";
-			break;
-			
+
+			break;			
 		case "/update.do":
-			command = new SelectCommand();
+			command = new SelectCommand();  // '수정' 이지만, 일단 읽어오는것부터 시작이다.
 			command.execute(request, response);
 			viewPage = "update.jsp";
 			break;
-			
+
 		case "/updateOk.do":
 			command = new UpdateCommand();
 			command.execute(request, response);
 			viewPage = "updateOk.jsp";
-			break;
-			
+			break;  // 디버깅 훈련, 이 break를 없애고, 찾아보기
+
 		case "/deleteOk.do":
 			command = new DeleteCommand();
 			command.execute(request, response);
 			viewPage = "deleteOk.jsp";
-			break;
-			
+			break;	
 		} // end switch
 		
 		// request 를 위에서 결정된 view 에 forward 해줌.
@@ -106,3 +99,32 @@ public class WriteController extends HttpServlet {
 	} // end actionDo()
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
